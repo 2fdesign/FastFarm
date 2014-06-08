@@ -31,6 +31,10 @@
    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(login:)];
    self.navigationItem.rightBarButtonItem = addButton;
    
+   refreshControl = [[UIRefreshControl alloc]init];
+   [self.tableView addSubview:refreshControl];
+   [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+   
    //UINavigationBar *navBar = self.navigationController.navigationBar;
    //UIImage *image = [UIImage imageNamed:@"yourNavBarBackground.png"];
    //[navBar setBackgroundImage:image];
@@ -39,6 +43,14 @@
    //NSURL *url = [NSURL URLWithString:@"http://www.airimage.co.nz/jd.txt"];
    //NSURLRequest *request = [NSURLRequest requestWithURL:url];
    //[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)refreshTable
+{
+   NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", [self getUserName], [self getPassword]];
+   NSString *eLD = [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
+   encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
+   [self sendHTTPGet];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -175,7 +187,7 @@
          if (getStatusCode == 200)
          {
             NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-            NSLog(@"Data = %@",text);
+            //NSLog(@"Data = %@",text);
             NSData* json_data = [text dataUsingEncoding:NSUTF8StringEncoding];
             NSError *err;
             tanks = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
@@ -189,17 +201,20 @@
                   NSLog(@"Item: %@", item);
                }
             }
+            [refreshControl endRefreshing];
             [self.tableView reloadData];
          }
          else
          {
             NSLog(@"No Server Found, or server down. Status Code=%ld",(long)getStatusCode);
+            [refreshControl endRefreshing];
          }
       }
       else
       {
          NSLog(@"HTTP Get Error: %@",error);
          NSLog(@"HTTP Response: %@", response);
+         [refreshControl endRefreshing];
       }
    }];
    
@@ -214,6 +229,15 @@
    NSLog(@"session didBecomeInvalidWithError: %@",error);
 }
 
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+   NSLog(@"session didCompleteWithError: %@",error);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
+{
+   NSLog(@"task didSendBodyData: %d",(int)(bytesSent));
+}
 
 
 #pragma mark - Table View
@@ -231,18 +255,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-   if (cell == nil)
+   if (cell == nil)  //cell == nil never called in storyboard UI
    {
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
    }
-   cell.textLabel.text = @"Hello";//[[tanks objectAtIndex:indexPath.row]objectForKey:@"\"name\""];
-   //NSNumber *capacity = [[tanks objectAtIndex:indexPath.row]objectForKey:@"\"capacity\""];
-   //NSNumber *level = [[tanks objectAtIndex:indexPath.row]objectForKey:@"\"level\""];
-   //float c = [capacity floatValue];
-   //float l = [level floatValue];
-   //float percent = l/c * 100;
-   //NSString *str = [[NSString alloc] initWithFormat:@"Tank is %d%% full", (int)(percent)];
-   //cell.detailTextLabel.text = str;
+   cell.textLabel.text = [[tanks objectAtIndex:indexPath.row]objectForKey:@"TankName"];
+   NSNumber *capacity = [[tanks objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
+   NSNumber *level = [[tanks objectAtIndex:indexPath.row]objectForKey:@"Level"];
+   float c = [capacity floatValue];
+   float l = [level floatValue];
+   float percent = l/c * 100;
+   NSString *str = [[NSString alloc] initWithFormat:@"Tank is %d%% full",(int)(percent)];
+   //NSLog(@"%@",str);
+   cell.detailTextLabel.text = str;
    cell.imageView.image = [UIImage imageNamed:@"guage80.png"];
    return cell;
 }

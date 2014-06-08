@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController <NSURLSessionDelegate>
+@interface MasterViewController : UITableViewController <NSURLSessionDelegate, NSURLSessionTaskDelegate>
 {
    NSArray *tanks;
    NSMutableData *Jdata;
    NSString *encodedLoginData;
+   UIRefreshControl *refreshControl;
 }
 -(void) sendHTTPGet;
 -(void) saveUserName:(NSString *)userName password:(NSString *)password;
