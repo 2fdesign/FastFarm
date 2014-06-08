@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
+		D4BC154F19431719000F32ED /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC154E19431719000F32ED /* Base64.m */; };
+		D4D2B0F4193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
+		D4D2B0F6193DEC1A00FCE4DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */; };
+		D4D2B0F8193DEC1A00FCE4DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */; };
+		D4D2B0FE193DEC1A00FCE4DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4D2B0FC193DEC1A00FCE4DB /* InfoPlist.strings */; };
+		D4D2B100193DEC1A00FCE4DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B0FF193DEC1A00FCE4DB /* main.m */; };
+		D4D2B104193DEC1A00FCE4DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */; };
+		D4D2B107193DEC1A00FCE4DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4D2B105193DEC1A00FCE4DB /* Main.storyboard */; };
+		D4D2B10A193DEC1A00FCE4DB /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B109193DEC1A00FCE4DB /* MasterViewController.m */; };
+		D4D2B10D193DEC1A00FCE4DB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */; };
+		D4D2B10F193DEC1A00FCE4DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */; };
+		D4D2B116193DEC1A00FCE4DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B115193DEC1A00FCE4DB /* XCTest.framework */; };
+		D4D2B117193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
+		D4D2B118193DEC1A00FCE4DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */; };
+		D4D2B120193DEC1A00FCE4DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4D2B11E193DEC1A00FCE4DB /* InfoPlist.strings */; };
+		D4D2B122193DEC1A00FCE4DB /* FastFarmV01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4D2B119193DEC1A00FCE4DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D2B0E8193DEC1A00FCE4DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4D2B0EF193DEC1A00FCE4DB;
+			remoteInfo = FastFarmV01;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
+		D4BC154D19431719000F32ED /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		D4BC154E19431719000F32ED /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastFarmV01.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D4D2B0FB193DEC1A00FCE4DB /* FastFarmV01-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastFarmV01-Info.plist"; sourceTree = "<group>"; };
+		D4D2B0FD193DEC1A00FCE4DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4D2B0FF193DEC1A00FCE4DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D4D2B101193DEC1A00FCE4DB /* FastFarmV01-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastFarmV01-Prefix.pch"; sourceTree = "<group>"; };
+		D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D4D2B106193DEC1A00FCE4DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D4D2B108193DEC1A00FCE4DB /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		D4D2B109193DEC1A00FCE4DB /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		D4D2B10B193DEC1A00FCE4DB /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D4D2B114193DEC1A00FCE4DB /* FastFarmV01Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastFarmV01Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D2B115193DEC1A00FCE4DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D4D2B11D193DEC1A00FCE4DB /* FastFarmV01Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastFarmV01Tests-Info.plist"; sourceTree = "<group>"; };
+		D4D2B11F193DEC1A00FCE4DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastFarmV01Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4D2B0ED193DEC1A00FCE4DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D2B0F6193DEC1A00FCE4DB /* CoreGraphics.framework in Frameworks */,
+				D4D2B0F8193DEC1A00FCE4DB /* UIKit.framework in Frameworks */,
+				D4D2B0F4193DEC1A00FCE4DB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D2B111193DEC1A00FCE4DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D2B116193DEC1A00FCE4DB /* XCTest.framework in Frameworks */,
+				D4D2B118193DEC1A00FCE4DB /* UIKit.framework in Frameworks */,
+				D4D2B117193DEC1A00FCE4DB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4D2B0E7193DEC1A00FCE4DB = {
+			isa = PBXGroup;
+			children = (
+				D4D2B0F9193DEC1A00FCE4DB /* FastFarmV01 */,
+				D4D2B11B193DEC1A00FCE4DB /* FastFarmV01Tests */,
+				D4D2B0F2193DEC1A00FCE4DB /* Frameworks */,
+				D4D2B0F1193DEC1A00FCE4DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D4D2B0F1193DEC1A00FCE4DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */,
+				D4D2B114193DEC1A00FCE4DB /* FastFarmV01Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4D2B0F2193DEC1A00FCE4DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */,
+				D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */,
+				D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */,
+				D4D2B115193DEC1A00FCE4DB /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4D2B0F9193DEC1A00FCE4DB /* FastFarmV01 */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */,
+				D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */,
+				D4D2B105193DEC1A00FCE4DB /* Main.storyboard */,
+				D4D2B108193DEC1A00FCE4DB /* MasterViewController.h */,
+				D4D2B109193DEC1A00FCE4DB /* MasterViewController.m */,
+				D4D2B10B193DEC1A00FCE4DB /* DetailViewController.h */,
+				D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */,
+				D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */,
+				D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */,
+				D4BC154D19431719000F32ED /* Base64.h */,
+				D47641DA194483E9003ED2B3 /* user.plist */,
+				D4BC154E19431719000F32ED /* Base64.m */,
+			);
+			path = FastFarmV01;
+			sourceTree = "<group>";
+		};
+		D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2B0FB193DEC1A00FCE4DB /* FastFarmV01-Info.plist */,
+				D4D2B0FC193DEC1A00FCE4DB /* InfoPlist.strings */,
+				D4D2B0FF193DEC1A00FCE4DB /* main.m */,
+				D4D2B101193DEC1A00FCE4DB /* FastFarmV01-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4D2B11B193DEC1A00FCE4DB /* FastFarmV01Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */,
+				D4D2B11C193DEC1A00FCE4DB /* Supporting Files */,
+			);
+			path = FastFarmV01Tests;
+			sourceTree = "<group>";
+		};
+		D4D2B11C193DEC1A00FCE4DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2B11D193DEC1A00FCE4DB /* FastFarmV01Tests-Info.plist */,
+				D4D2B11E193DEC1A00FCE4DB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D4D2B0EF193DEC1A00FCE4DB /* FastFarmV01 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4D2B125193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01" */;
+			buildPhases = (
+				D4D2B0EC193DEC1A00FCE4DB /* Sources */,
+				D4D2B0ED193DEC1A00FCE4DB /* Frameworks */,
+				D4D2B0EE193DEC1A00FCE4DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastFarmV01;
+			productName = FastFarmV01;
+			productReference = D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D4D2B113193DEC1A00FCE4DB /* FastFarmV01Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4D2B128193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01Tests" */;
+			buildPhases = (
+				D4D2B110193DEC1A00FCE4DB /* Sources */,
+				D4D2B111193DEC1A00FCE4DB /* Frameworks */,
+				D4D2B112193DEC1A00FCE4DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4D2B11A193DEC1A00FCE4DB /* PBXTargetDependency */,
+			);
+			name = FastFarmV01Tests;
+			productName = FastFarmV01Tests;
+			productReference = D4D2B114193DEC1A00FCE4DB /* FastFarmV01Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4D2B0E8193DEC1A00FCE4DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "2fDesign Ltd.";
+				TargetAttributes = {
+					D4D2B113193DEC1A00FCE4DB = {
+						TestTargetID = D4D2B0EF193DEC1A00FCE4DB;
+					};
+				};
+			};
+			buildConfigurationList = D4D2B0EB193DEC1A00FCE4DB /* Build configuration list for PBXProject "FastFarmV01" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D4D2B0E7193DEC1A00FCE4DB;
+			productRefGroup = D4D2B0F1193DEC1A00FCE4DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4D2B0EF193DEC1A00FCE4DB /* FastFarmV01 */,
+				D4D2B113193DEC1A00FCE4DB /* FastFarmV01Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4D2B0EE193DEC1A00FCE4DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D2B10F193DEC1A00FCE4DB /* Images.xcassets in Resources */,
+				D4D2B0FE193DEC1A00FCE4DB /* InfoPlist.strings in Resources */,
+				D4D2B107193DEC1A00FCE4DB /* Main.storyboard in Resources */,
+				D47641DB194483E9003ED2B3 /* user.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D2B112193DEC1A00FCE4DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D2B120193DEC1A00FCE4DB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4D2B0EC193DEC1A00FCE4DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D2B104193DEC1A00FCE4DB /* AppDelegate.m in Sources */,
+				D4BC154F19431719000F32ED /* Base64.m in Sources */,
+				D4D2B10A193DEC1A00FCE4DB /* MasterViewController.m in Sources */,
+				D4D2B100193DEC1A00FCE4DB /* main.m in Sources */,
+				D4D2B10D193DEC1A00FCE4DB /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D2B110193DEC1A00FCE4DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D2B122193DEC1A00FCE4DB /* FastFarmV01Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4D2B11A193DEC1A00FCE4DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4D2B0EF193DEC1A00FCE4DB /* FastFarmV01 */;
+			targetProxy = D4D2B119193DEC1A00FCE4DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D4D2B0FC193DEC1A00FCE4DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4D2B0FD193DEC1A00FCE4DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D4D2B105193DEC1A00FCE4DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4D2B106193DEC1A00FCE4DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D4D2B11E193DEC1A00FCE4DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4D2B11F193DEC1A00FCE4DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D4D2B123193DEC1A00FCE4DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D4D2B124193DEC1A00FCE4DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D4D2B126193DEC1A00FCE4DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
+				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D4D2B127193DEC1A00FCE4DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
+				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D4D2B129193DEC1A00FCE4DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FastFarmV01.app/FastFarmV01";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FastFarmV01Tests/FastFarmV01Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D4D2B12A193DEC1A00FCE4DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FastFarmV01.app/FastFarmV01";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
+				INFOPLIST_FILE = "FastFarmV01Tests/FastFarmV01Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4D2B0EB193DEC1A00FCE4DB /* Build configuration list for PBXProject "FastFarmV01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4D2B123193DEC1A00FCE4DB /* Debug */,
+				D4D2B124193DEC1A00FCE4DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4D2B125193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4D2B126193DEC1A00FCE4DB /* Debug */,
+				D4D2B127193DEC1A00FCE4DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4D2B128193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4D2B129193DEC1A00FCE4DB /* Debug */,
+				D4D2B12A193DEC1A00FCE4DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4D2B0E8193DEC1A00FCE4DB /* Project object */;
+}
