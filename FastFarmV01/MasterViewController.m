@@ -10,12 +10,20 @@
 #import "DetailViewController.h"
 #import "Base64.h"
 
-@interface MasterViewController () {
+@interface MasterViewController ()
+{
     NSMutableArray *_objects;
 }
 @end
 
 @implementation MasterViewController
+
+//@synthesize tanks;
+@synthesize encodedLoginData;
+@synthesize refreshControl;
+@synthesize sessionConfig;
+@synthesize dataTask;
+@synthesize defaultSession;
 
 - (void)awakeFromNib
 {
@@ -38,11 +46,6 @@
    //UINavigationBar *navBar = self.navigationController.navigationBar;
    //UIImage *image = [UIImage imageNamed:@"yourNavBarBackground.png"];
    //[navBar setBackgroundImage:image];
-   
-   //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-   //NSURL *url = [NSURL URLWithString:@"http://www.airimage.co.nz/jd.txt"];
-   //NSURLRequest *request = [NSURLRequest requestWithURL:url];
-   //[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)refreshTable
@@ -51,36 +54,6 @@
    NSString *eLD = [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
    encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
    [self sendHTTPGet];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-   Jdata = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)theData
-{
-   [Jdata appendData:theData];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-   NSString *strData = [[NSString alloc]initWithData:Jdata encoding:NSUTF8StringEncoding];
-   NSLog(@"%@", strData);
-   NSError *err;
-   tanks = [NSJSONSerialization JSONObjectWithData:Jdata options:NSJSONReadingMutableContainers error:&err];
-   if (!tanks)
-   {
-      NSLog(@"Error parsing JSON: %@", err);
-   } else
-   {
-      for(NSDictionary *item in tanks)
-      {
-         NSLog(@"Item: %@", item);
-      }
-   }
-   [self.tableView reloadData];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -105,14 +78,14 @@
    [plistDict setValue:password forKey: @"password"];
    [plistDict writeToFile:path atomically:YES];
 }
-- (NSString *) getUserName
+-(NSString *) getUserName
 {
    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
    path = [path stringByAppendingPathComponent:@"user.plist"];
    NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
    return [plistDict objectForKey:@"user"];
 }
-- (NSString *) getPassword
+-(NSString *) getPassword
 {
    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
    path = [path stringByAppendingPathComponent:@"user.plist"];
@@ -140,8 +113,6 @@
       UITextField *password = [alertView textFieldAtIndex:1];
       NSLog(@"password: %@", password.text);
       
-      //username.text = @"stephen";
-      //password.text = @"Fm0/k#LV5C?Ikh";
       [self saveUserName:username.text password:password.text];
       
       NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username.text, password.text];
@@ -159,7 +130,7 @@
 -(void) sendHTTPGet
 {
    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-   NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+   sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
    
    sessionConfig.allowsCellularAccess = YES;
    [sessionConfig setHTTPAdditionalHeaders: @{@"Accept": @"application/json"}];
@@ -170,11 +141,11 @@
    sessionConfig.timeoutIntervalForResource = 60.0;
    sessionConfig.HTTPMaximumConnectionsPerHost = 1;
    
-   NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: sessionConfig delegate: self delegateQueue: [NSOperationQueue mainQueue]];
+   defaultSession = [NSURLSession sessionWithConfiguration: sessionConfig delegate: self delegateQueue: [NSOperationQueue mainQueue]];
    //NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
    NSURL * url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
    
-   NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+   dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
    {
       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
       if(error == nil)
@@ -190,13 +161,13 @@
             //NSLog(@"Data = %@",text);
             NSData* json_data = [text dataUsingEncoding:NSUTF8StringEncoding];
             NSError *err;
-            tanks = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
-            if (!tanks)
+            _objects = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
+            if (!_objects)
             {
                NSLog(@"Error parsing JSON: %@", err);
             } else
             {
-               for(NSDictionary *item in tanks)
+               for(NSDictionary *item in _objects)
                {
                   NSLog(@"Item: %@", item);
                }
@@ -249,26 +220,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return [tanks count];
+   return [_objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-   if (cell == nil)  //cell == nil never called in storyboard UI
-   {
-      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
-   }
-   cell.textLabel.text = [[tanks objectAtIndex:indexPath.row]objectForKey:@"TankName"];
-   NSNumber *capacity = [[tanks objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
-   NSNumber *level = [[tanks objectAtIndex:indexPath.row]objectForKey:@"Level"];
+   //if (cell == nil)  //cell == nil never called in storyboard UI
+   //{
+   //   cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+   //}
+   cell.textLabel.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"];
+   NSNumber *capacity = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
+   NSNumber *level = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Level"];
    float c = [capacity floatValue];
    float l = [level floatValue];
    float percent = l/c * 100;
    NSString *str = [[NSString alloc] initWithFormat:@"Tank is %d%% full",(int)(percent)];
    //NSLog(@"%@",str);
    cell.detailTextLabel.text = str;
-   cell.imageView.image = [UIImage imageNamed:@"guage80.png"];
+   //cell.imageView.image = [UIImage imageNamed:@"guage80.png"];
    return cell;
 }
 

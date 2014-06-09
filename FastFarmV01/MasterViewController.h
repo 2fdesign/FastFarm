@@ -8,15 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController <NSURLSessionDelegate, NSURLSessionTaskDelegate>
+@interface MasterViewController : UITableViewController //<NSURLSessionDelegate>//, NSURLSessionTaskDelegate>
 {
-   NSArray *tanks;
-   NSMutableData *Jdata;
+   //NSArray *tanks;
    NSString *encodedLoginData;
    UIRefreshControl *refreshControl;
+   NSURLSessionDataTask *dataTask;
+   NSURLSession *defaultSession;
+   NSURLSessionConfiguration *sessionConfig;
 }
--(void) sendHTTPGet;
--(void) saveUserName:(NSString *)userName password:(NSString *)password;
+//@property (nonatomic, retain) NSArray *tanks;
+@property (nonatomic, retain) NSString *encodedLoginData;
+@property (nonatomic, retain) UIRefreshControl *refreshControl;
+@property (nonatomic, retain) NSURLSessionDataTask *dataTask;
+@property (nonatomic, retain) NSURLSession *defaultSession;
+@property (nonatomic, retain) NSURLSessionConfiguration *sessionConfig;
+
+- (void) sendHTTPGet;
+- (void) saveUserName:(NSString *)userName password:(NSString *)password;
 - (NSString *) getUserName;
 - (NSString *) getPassword;
 
