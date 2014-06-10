@@ -19,11 +19,13 @@
 @implementation MasterViewController
 
 //@synthesize tanks;
-@synthesize encodedLoginData;
-@synthesize refreshControl;
-@synthesize sessionConfig;
-@synthesize dataTask;
-@synthesize defaultSession;
+@synthesize encodedLoginData = _encodedLoginData;
+@synthesize refreshControl = _refreshControl;
+//@synthesize sessionConfig = _sessionConfig;
+//@synthesize dataTask = _dataTask;
+//@synthesize defaultSession = _defaultSession;
+@synthesize connection = _connection;
+@synthesize receivedData = _receivedData;;
 
 - (void)awakeFromNib
 {
@@ -39,9 +41,9 @@
    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(login:)];
    self.navigationItem.rightBarButtonItem = addButton;
    
-   refreshControl = [[UIRefreshControl alloc]init];
-   [self.tableView addSubview:refreshControl];
-   [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+   _refreshControl = [[UIRefreshControl alloc]init];
+   [self.tableView addSubview:_refreshControl];
+   [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
    
    //UINavigationBar *navBar = self.navigationController.navigationBar;
    //UIImage *image = [UIImage imageNamed:@"yourNavBarBackground.png"];
@@ -51,9 +53,10 @@
 - (void)refreshTable
 {
    NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", [self getUserName], [self getPassword]];
+   //NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", @"stephen", @"Fm0/k#LV5C?Ikh"];
    NSString *eLD = [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
-   encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
-   [self sendHTTPGet];
+   _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
+   [self sendHTTPGetSync];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -116,98 +119,106 @@
       [self saveUserName:username.text password:password.text];
       
       NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username.text, password.text];
+      //NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", @"stephen", @"Fm0/k#LV5C?Ikh"];
       
       // employ the Base64 encoding above to encode the authentication tokens
       NSString *eLD = [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
-      encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
+      _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
       
-      NSLog(@"encodedLoginData: %@",encodedLoginData);
+      NSLog(@"encodedLoginData: %@",_encodedLoginData);
       
-      [self sendHTTPGet];
+      NSMutableData *data = [[NSMutableData alloc] init];
+      _receivedData = data;
+      
+      [self sendHTTPGetSync];
    }
 }
 
 -(void) sendHTTPGet
 {
-   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-   sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-   
-   sessionConfig.allowsCellularAccess = YES;
-   [sessionConfig setHTTPAdditionalHeaders: @{@"Accept": @"application/json"}];
-   [sessionConfig setHTTPAdditionalHeaders: @{@"Authorization": encodedLoginData}];
-   
-   // 3
-   sessionConfig.timeoutIntervalForRequest = 30.0;
-   sessionConfig.timeoutIntervalForResource = 60.0;
-   sessionConfig.HTTPMaximumConnectionsPerHost = 1;
-   
-   defaultSession = [NSURLSession sessionWithConfiguration: sessionConfig delegate: self delegateQueue: [NSOperationQueue mainQueue]];
-   //NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
-   NSURL * url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
-   
-   dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-   {
-      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-      if(error == nil)
-      {
-         //NSLog(@"HTTP Response: %@", response);
-         NSHTTPURLResponse *getResponse = (NSHTTPURLResponse *)response;
-         //NSDictionary *allHeaders = [getResponse allHeaderFields];
-         NSInteger getStatusCode = [getResponse statusCode];
-         //NSLog(@"HTTPResponce Status Code: %d",getStatusCode);
-         if (getStatusCode == 200)
-         {
-            NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-            //NSLog(@"Data = %@",text);
-            NSData* json_data = [text dataUsingEncoding:NSUTF8StringEncoding];
-            NSError *err;
-            _objects = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
-            if (!_objects)
-            {
-               NSLog(@"Error parsing JSON: %@", err);
-            } else
-            {
-               for(NSDictionary *item in _objects)
-               {
-                  NSLog(@"Item: %@", item);
-               }
-            }
-            [refreshControl endRefreshing];
-            [self.tableView reloadData];
-         }
-         else
-         {
-            NSLog(@"No Server Found, or server down. Status Code=%ld",(long)getStatusCode);
-            [refreshControl endRefreshing];
-         }
-      }
-      else
-      {
-         NSLog(@"HTTP Get Error: %@",error);
-         NSLog(@"HTTP Response: %@", response);
-         [refreshControl endRefreshing];
-      }
-   }];
-   
-   [dataTask resume];
-   
+   [_connection cancel];
+   NSMutableData *data = [[NSMutableData alloc] init];
+   _receivedData = data;
+   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
+   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+   [request addValue:_encodedLoginData forHTTPHeaderField:@"Authorization"];
+   NSURLConnection *newConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+   _connection = newConnection;
+   [_connection start];
 }
+
+-(void) sendHTTPGetSync
+{
+   //if there is a connection going on just cancel it.
+   [_connection cancel];
+   
+   //initialize new mutable data
+   NSMutableData *data = [[NSMutableData alloc] init];
+   _receivedData = data;
+   
+   //initialize url that is going to be fetched.
+   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
+   
+   //initialize a request from url
+   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+   [request addValue:_encodedLoginData forHTTPHeaderField:@"Authorization"];
+   NSURLResponse *response = [[NSURLResponse alloc] init];
+   
+   [_receivedData appendData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil]];
+   
+   //initialize convert the received data to string with UTF8 encoding		
+   NSString *htmlSTR = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
+   
+   NSHTTPURLResponse *getResponse = (NSHTTPURLResponse *)response;
+   //NSDictionary *allHeaders = [getResponse allHeaderFields];
+   NSInteger getStatusCode = [getResponse statusCode];
+   
+   if (getStatusCode == 200)
+   {
+      NSData* json_data = [htmlSTR dataUsingEncoding:NSUTF8StringEncoding];
+      NSError *err;
+      _objects = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
+      if (!_objects)
+      {
+         NSLog(@"Error parsing JSON: %@", err);
+      } else
+      {
+         for(NSDictionary *item in _objects)
+         {
+            NSLog(@"Item: %@", item);
+         }
+      }
+      [_refreshControl endRefreshing];
+      [_connection cancel];
+      [self.tableView reloadData];
+   }
+   else
+   {
+      NSLog(@"No Server Found, or server down. Status Code=%ld",(long)getStatusCode);
+      [_refreshControl endRefreshing];
+   }
+}
+
 
 #pragma mark - NSURLSessionDelegate protocol methods
 
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-   NSLog(@"session didBecomeInvalidWithError: %@",error);
+   [_receivedData appendData:data];
+   NSLog(@"connection received: %@",_receivedData);
 }
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-   NSLog(@"session didCompleteWithError: %@",error);
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
-{
-   NSLog(@"task didSendBodyData: %d",(int)(bytesSent));
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+   
+   //initialize convert the received data to string with UTF8 encoding
+   NSString *htmlSTR = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
+   NSLog(@"receivedData: %@",self.receivedData);
+   NSLog(@"connectionDidFinishLoading %@: " , htmlSTR);
+   //initialize a new webviewcontroller
+   //WebViewController *controller = [[WebViewController alloc] initWithString:htmlSTR];
+   
+   //show controller with navigation
+   //[self.navigationController pushViewController:controller animated:YES];
 }
 
 
@@ -267,7 +278,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"showDetail"])
+    {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = _objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
