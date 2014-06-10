@@ -25,7 +25,7 @@
 //@synthesize dataTask = _dataTask;
 //@synthesize defaultSession = _defaultSession;
 @synthesize connection = _connection;
-@synthesize receivedData = _receivedData;;
+@synthesize receivedData = _receivedData;
 
 - (void)awakeFromNib
 {
@@ -37,7 +37,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+   
    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(login:)];
    self.navigationItem.rightBarButtonItem = addButton;
    
@@ -53,9 +53,10 @@
 - (void)refreshTable
 {
    NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", [self getUserName], [self getPassword]];
-   //NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", @"stephen", @"Fm0/k#LV5C?Ikh"];
-   NSString *eLD = [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
-   _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
+   NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
+   NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+   _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
+   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
    [self sendHTTPGetSync];
 }
 
@@ -119,17 +120,13 @@
       [self saveUserName:username.text password:password.text];
       
       NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username.text, password.text];
-      //NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", @"stephen", @"Fm0/k#LV5C?Ikh"];
+      NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
+      NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+      _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
       
-      // employ the Base64 encoding above to encode the authentication tokens
-      NSString *eLD = [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
-      _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", eLD];
-      
-      NSLog(@"encodedLoginData: %@",_encodedLoginData);
-      
-      NSMutableData *data = [[NSMutableData alloc] init];
-      _receivedData = data;
-      
+      //NSMutableData *data = [[NSMutableData alloc] init];
+      //_receivedData = data;
+      [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
       [self sendHTTPGetSync];
    }
 }
@@ -160,8 +157,17 @@
    NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
    
    //initialize a request from url
+   // GET http://api.m2mnz.com/v1.0/tanks HTTP/1.1
+   // User-Agent: Fiddler
+   // Content-Type: application/json
+   // Host: api.m2mnz.com
+   // Content-Length: 0
+   //Authorization: Basic c3RlcGhlbjpGbTAvayNMVjVDP0lraA==
+   
    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
    [request addValue:_encodedLoginData forHTTPHeaderField:@"Authorization"];
+   //[request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+   //[request addValue:@"Fiddler" forHTTPHeaderField:@"User-Agent"];
    NSURLResponse *response = [[NSURLResponse alloc] init];
    
    [_receivedData appendData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil]];
@@ -170,14 +176,16 @@
    NSString *htmlSTR = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
    
    NSHTTPURLResponse *getResponse = (NSHTTPURLResponse *)response;
-   //NSDictionary *allHeaders = [getResponse allHeaderFields];
+   NSDictionary *allHeaders = [getResponse allHeaderFields];
    NSInteger getStatusCode = [getResponse statusCode];
+   NSLog(@"All Headers %@",allHeaders);
    
    if (getStatusCode == 200)
    {
       NSData* json_data = [htmlSTR dataUsingEncoding:NSUTF8StringEncoding];
       NSError *err;
       _objects = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
+      NSLog(@"Objects as mutable data: %@",_objects);
       if (!_objects)
       {
          NSLog(@"Error parsing JSON: %@", err);
@@ -188,15 +196,15 @@
             NSLog(@"Item: %@", item);
          }
       }
-      [_refreshControl endRefreshing];
-      [_connection cancel];
-      [self.tableView reloadData];
+      //[self.tableView reloadData];
+      [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
    }
    else
    {
       NSLog(@"No Server Found, or server down. Status Code=%ld",(long)getStatusCode);
-      [_refreshControl endRefreshing];
    }
+   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+   [_refreshControl endRefreshing];
 }
 
 
@@ -250,7 +258,7 @@
    NSString *str = [[NSString alloc] initWithFormat:@"Tank is %d%% full",(int)(percent)];
    //NSLog(@"%@",str);
    cell.detailTextLabel.text = str;
-   //cell.imageView.image = [UIImage imageNamed:@"guage80.png"];
+   cell.imageView.image = [UIImage imageNamed:@"guage80.png"];
    return cell;
 }
 
@@ -260,21 +268,21 @@
     return NO;
 }
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-*/
 
-/*
+
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return NO;
 }
-*/
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

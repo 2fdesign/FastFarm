@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
-		D4BC154F19431719000F32ED /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC154E19431719000F32ED /* Base64.m */; };
 		D4D2B0F4193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
 		D4D2B0F6193DEC1A00FCE4DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */; };
 		D4D2B0F8193DEC1A00FCE4DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */; };
@@ -38,8 +37,6 @@
 
 /* Begin PBXFileReference section */
 		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
-		D4BC154D19431719000F32ED /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		D4BC154E19431719000F32ED /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastFarmV01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,9 +126,7 @@
 				D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */,
 				D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */,
 				D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */,
-				D4BC154D19431719000F32ED /* Base64.h */,
 				D47641DA194483E9003ED2B3 /* user.plist */,
-				D4BC154E19431719000F32ED /* Base64.m */,
 			);
 			path = FastFarmV01;
 			sourceTree = "<group>";
@@ -267,7 +262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D2B104193DEC1A00FCE4DB /* AppDelegate.m in Sources */,
-				D4BC154F19431719000F32ED /* Base64.m in Sources */,
 				D4D2B10A193DEC1A00FCE4DB /* MasterViewController.m in Sources */,
 				D4D2B100193DEC1A00FCE4DB /* main.m in Sources */,
 				D4D2B10D193DEC1A00FCE4DB /* DetailViewController.m in Sources */,
@@ -353,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -388,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = NO;
@@ -405,7 +399,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
 				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -422,7 +416,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
 				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
