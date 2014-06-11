@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController
+{
+}
 
 @property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) NSDictionary *tankData;
+@property (nonatomic, retain) IBOutlet UILabel *dateLabel;
+@property (nonatomic, retain) IBOutlet UILabel *timeLabel;
+@property (nonatomic, retain) IBOutlet UILabel *capacityLabel;
+@property (nonatomic, retain) IBOutlet UILabel *dteLabel;
+@property (nonatomic, retain) IBOutlet UILabel *ltfLabel;
+@property (nonatomic, retain) UIImageView* gaugePointer;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+
 @end

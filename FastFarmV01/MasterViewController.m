@@ -8,7 +8,6 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
-#import "Base64.h"
 
 @interface MasterViewController ()
 {
@@ -30,6 +29,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+    self.navigationItem.titleView = img;
 }
 
 - (void)viewDidLoad
@@ -38,11 +39,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
    
-   UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(login:)];
+   //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(login:)];
+   UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(login:)];
+   
    self.navigationItem.rightBarButtonItem = addButton;
    
    _refreshControl = [[UIRefreshControl alloc]init];
+   //_refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
    [self.tableView addSubview:_refreshControl];
+   
    [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
    
    //UINavigationBar *navBar = self.navigationController.navigationBar;
@@ -52,12 +57,21 @@
 
 - (void)refreshTable
 {
+   //refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
    NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", [self getUserName], [self getPassword]];
    NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
    NSString *base64String = [plainData base64EncodedStringWithOptions:0];
    _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
    [self sendHTTPGetSync];
+   
+   // Below could be useful if need to support pre-iOS7
+   //if ([data respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+   //   string = [data base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
+   //} else {
+   //   string = [data base64Encoding];                              // pre iOS7
+   //}
+   
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -136,7 +150,7 @@
    [_connection cancel];
    NSMutableData *data = [[NSMutableData alloc] init];
    _receivedData = data;
-   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
+   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.1/tanks/"];
    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
    [request addValue:_encodedLoginData forHTTPHeaderField:@"Authorization"];
    NSURLConnection *newConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -154,7 +168,7 @@
    _receivedData = data;
    
    //initialize url that is going to be fetched.
-   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.0/tanks/"];
+   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.1/tanks/"];
    
    //initialize a request from url
    // GET http://api.m2mnz.com/v1.0/tanks HTTP/1.1
@@ -176,16 +190,16 @@
    NSString *htmlSTR = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
    
    NSHTTPURLResponse *getResponse = (NSHTTPURLResponse *)response;
-   NSDictionary *allHeaders = [getResponse allHeaderFields];
+   //NSDictionary *allHeaders = [getResponse allHeaderFields];
    NSInteger getStatusCode = [getResponse statusCode];
-   NSLog(@"All Headers %@",allHeaders);
+   //NSLog(@"All Headers %@",allHeaders);
    
    if (getStatusCode == 200)
    {
       NSData* json_data = [htmlSTR dataUsingEncoding:NSUTF8StringEncoding];
       NSError *err;
       _objects = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingMutableContainers error:&err];
-      NSLog(@"Objects as mutable data: %@",_objects);
+      //NSLog(@"Objects as mutable data: %@",_objects);
       if (!_objects)
       {
          NSLog(@"Error parsing JSON: %@", err);
@@ -258,7 +272,7 @@
    NSString *str = [[NSString alloc] initWithFormat:@"Tank is %d%% full",(int)(percent)];
    //NSLog(@"%@",str);
    cell.detailTextLabel.text = str;
-   cell.imageView.image = [UIImage imageNamed:@"guage80.png"];
+   //cell.imageView.image = [UIImage imageNamed:@"GaugeBase250"];
    return cell;
 }
 
@@ -289,7 +303,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
+        NSDictionary *object = _objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
