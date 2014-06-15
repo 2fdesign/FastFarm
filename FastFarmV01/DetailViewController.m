@@ -10,7 +10,7 @@
 
 #define deg2Rad(x) (M_PI * x / 180.0)
 uint16_t x=20,y=80;
-int c,l;
+int c,l,animation_l,stepChange;
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -19,6 +19,7 @@ int c,l;
 @implementation DetailViewController
 @synthesize tankData = _tankData;
 @synthesize gaugePointer = _gaugePointer;
+@synthesize gaugeAnimationTimer = _gaugeAnimationTimer;
 
 #pragma mark - Managing the detail item
 
@@ -66,12 +67,32 @@ int c,l;
 
 -(void)setGaugeLevel
 {
-   float lN = ((float)(l)/(float)(c) * 270) - 225;
-   NSLog(@"lN %f",lN);
-   //* 270) - 225;
-   //NSLog(@"Level Normalised %f",levelNormalised);
-   _gaugePointer.transform = CGAffineTransformMakeRotation(deg2Rad(lN));
+   animation_l = 0;
+   float levelNormalised = ((float)(animation_l)/(float)(c) * 270) - 225;
+   NSLog(@"lN %f",levelNormalised);
+   
+   stepChange = l/100;
+   
+   _gaugePointer.transform = CGAffineTransformMakeRotation(deg2Rad(levelNormalised));
    [self.view bringSubviewToFront:_gaugePointer];
+   _gaugeAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(gaugeTimerFire:) userInfo:nil repeats:YES];
+}
+
+-(void)gaugeTimerFire:(NSTimer *)timer
+{
+   if ((l - animation_l) < (l / 25))
+      animation_l += stepChange / 6;
+   else if ((l - animation_l) < (l / 10))
+      animation_l += stepChange / 2;
+   else
+      animation_l += stepChange;
+   if (animation_l >= l)
+      [timer invalidate];
+   else
+   {
+      float levelNormalised = ((float)(animation_l)/(float)(c) * 270) - 225;
+      _gaugePointer.transform = CGAffineTransformMakeRotation(deg2Rad(levelNormalised));
+   }
    
 }
 

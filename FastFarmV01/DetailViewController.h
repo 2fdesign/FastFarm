@@ -20,8 +20,10 @@
 @property (nonatomic, retain) IBOutlet UILabel *dteLabel;
 @property (nonatomic, retain) IBOutlet UILabel *ltfLabel;
 @property (nonatomic, retain) UIImageView* gaugePointer;
+@property (nonatomic, retain) NSTimer *gaugeAnimationTimer;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
+-(void)gaugeTimerFire:(NSTimer *)timer;
 
 @end

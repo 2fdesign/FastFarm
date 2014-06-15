@@ -60,18 +60,20 @@
    //refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
    NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", [self getUserName], [self getPassword]];
    NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
-   NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+   
+   //NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+   NSString *base64String = [[NSString alloc]init];
+   if ([base64String respondsToSelector:@selector(base64EncodedStringWithOptions:)])
+   {
+      base64String = [plainData base64EncodedStringWithOptions:0];  // iOS 7+
+   }
+   else
+   {
+      base64String = [plainData base64Encoding];                              // pre iOS7
+   }
    _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
    [self sendHTTPGetSync];
-   
-   // Below could be useful if need to support pre-iOS7
-   //if ([data respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
-   //   string = [data base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
-   //} else {
-   //   string = [data base64Encoding];                              // pre iOS7
-   //}
-   
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -135,7 +137,16 @@
       
       NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username.text, password.text];
       NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
-      NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+      //NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+      NSString *base64String = [[NSString alloc]init];
+      if ([base64String respondsToSelector:@selector(base64EncodedStringWithOptions:)])
+      {
+         base64String = [plainData base64EncodedStringWithOptions:0];  // iOS 7+
+      }
+      else
+      {
+         base64String = [plainData base64Encoding];                              // pre iOS7
+      }
       _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
       
       //NSMutableData *data = [[NSMutableData alloc] init];
