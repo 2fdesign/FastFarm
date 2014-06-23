@@ -48,8 +48,8 @@ int c,l,animation_l,stepChange;
 {
    
    [super viewDidLoad];
-   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.navigationItem.titleView = img;
+   //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   //self.navigationItem.titleView = img;
    
    UIImageView* gaugeBase = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GaugeBase250"]];
    [gaugeBase setFrame:CGRectMake(x, y, 125, 125)];
