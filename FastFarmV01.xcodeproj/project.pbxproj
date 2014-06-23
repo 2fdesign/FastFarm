@@ -93,6 +93,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4789A4B1958349800674D29 /* About Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D4760E5D19582FC200AA81B2 /* AboutViewController.h */,
+				D4760E5E19582FC200AA81B2 /* AboutViewController.m */,
+			);
+			name = "About Tab";
+			sourceTree = "<group>";
+		};
+		D4789A4C195834A400674D29 /* Login Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D4760E6019582FD700AA81B2 /* LoginViewController.h */,
+				D4760E6119582FD700AA81B2 /* LoginViewController.m */,
+			);
+			name = "Login Tab";
+			sourceTree = "<group>";
+		};
+		D4789A4D195834AE00674D29 /* iLevel Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D4760E5A19581EC600AA81B2 /* iLevelViewController.h */,
+				D4760E5B19581EC600AA81B2 /* iLevelViewController.m */,
+				D4D2B108193DEC1A00FCE4DB /* FuelViewController.h */,
+				D4D2B109193DEC1A00FCE4DB /* FuelViewController.m */,
+				D4D2B10B193DEC1A00FCE4DB /* DetailViewController.h */,
+				D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */,
+			);
+			name = "iLevel Tab";
+			sourceTree = "<group>";
+		};
 		D4D2B0E7193DEC1A00FCE4DB = {
 			isa = PBXGroup;
 			children = (
@@ -129,16 +160,9 @@
 				D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */,
 				D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */,
 				D4D2B105193DEC1A00FCE4DB /* Main.storyboard */,
-				D4760E5D19582FC200AA81B2 /* AboutViewController.h */,
-				D4760E5E19582FC200AA81B2 /* AboutViewController.m */,
-				D4760E6019582FD700AA81B2 /* LoginViewController.h */,
-				D4760E6119582FD700AA81B2 /* LoginViewController.m */,
-				D4760E5A19581EC600AA81B2 /* iLevelViewController.h */,
-				D4760E5B19581EC600AA81B2 /* iLevelViewController.m */,
-				D4D2B108193DEC1A00FCE4DB /* FuelViewController.h */,
-				D4D2B109193DEC1A00FCE4DB /* FuelViewController.m */,
-				D4D2B10B193DEC1A00FCE4DB /* DetailViewController.h */,
-				D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */,
+				D4789A4B1958349800674D29 /* About Tab */,
+				D4789A4C195834A400674D29 /* Login Tab */,
+				D4789A4D195834AE00674D29 /* iLevel Tab */,
 				D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */,
 				D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */,
 				D47641DA194483E9003ED2B3 /* user.plist */,
