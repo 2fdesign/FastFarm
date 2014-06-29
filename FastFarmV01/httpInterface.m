@@ -86,6 +86,11 @@ uint16_t httpMessage;
    [_connection start];
 }
 
+- (void) cancelConnection
+{
+   [_connection cancel];
+}
+
 #pragma mark - NSURLSessionDelegate protocol methods
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

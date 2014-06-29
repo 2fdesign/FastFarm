@@ -34,6 +34,12 @@
    [super viewDidAppear:animated];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+   [_http1 cancelConnection];
+   [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,6 +58,8 @@
    
    [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
    
+   _http1 = [[httpInterface alloc] initWithDelegate:self];
+   
    //UINavigationBar *navBar = self.navigationController.navigationBar;
    //UIImage *image = [UIImage imageNamed:@"yourNavBarBackground.png"];
    //[navBar setBackgroundImage:image];
@@ -61,8 +69,8 @@
 {
    userDetails *user = [userDetails alloc];
    
-   httpInterface *http = [[httpInterface alloc] initWithDelegate:self];
-   [http getFuelDataForUser:[user getUserName] password:[user getPassword]];
+   //httpInterface *http = [[httpInterface alloc] initWithDelegate:self];
+   [_http1 getFuelDataForUser:[user getUserName] password:[user getPassword]];
 }
 
 - (void)didReceiveMemoryWarning

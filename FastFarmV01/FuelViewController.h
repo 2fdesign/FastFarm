@@ -15,5 +15,6 @@
 
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
 @property (retain, nonatomic) UITableView *tableView;
+@property (retain, nonatomic) httpInterface *http1;
 
 @end
