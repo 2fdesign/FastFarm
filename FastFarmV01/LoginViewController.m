@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "userDetails.h"
 
 @interface LoginViewController ()
 
@@ -40,6 +41,35 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+   [super viewDidAppear:animated];
+   userDetails *user = [userDetails alloc];
+   _textUser.text = [user getUserName];
+   _textPassword.text = [user getPassword];
+}
+
+
+-(IBAction) btnLoginPress: (id) sender
+{
+   [_textUser resignFirstResponder];
+   [_textPassword resignFirstResponder];
+   userDetails *user = [userDetails alloc];
+   [user saveUserName:_textUser.text password:_textPassword.text];
+}
+
+-(IBAction) btnForgotPasswordPress: (id) sender
+{
+   [_textUser resignFirstResponder];
+   [_textPassword resignFirstResponder];
+}
+
+-(IBAction) backgroundPress: (id) sender
+{
+   [_textUser resignFirstResponder];
+   [_textPassword resignFirstResponder];
 }
 
 /*

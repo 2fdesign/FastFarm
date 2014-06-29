@@ -7,24 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "httpInterface.h"
 
-@interface FuelViewController : UITableViewController <NSURLConnectionDataDelegate>//, NSURLSessionTaskDelegate>
+@class httpInterface;
 
-//@property (nonatomic, retain) NSArray *tanks;
-@property (retain, nonatomic) NSString *encodedLoginData;
+@interface FuelViewController : UITableViewController <httpInterfaceDelegate>//, NSURLSessionTaskDelegate>
+
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
-//@property (retain, nonatomic) NSURLSessionDataTask *dataTask;
-//@property (retain, nonatomic) NSURLSession *defaultSession;
-//@property (retain, nonatomic) NSURLSessionConfiguration *sessionConfig;
 @property (retain, nonatomic) UITableView *tableView;
-@property (retain, nonatomic) NSURLConnection *connection;
-@property (retain, nonatomic) NSMutableData *receivedData;
-
-- (void) sendHTTPGetSync;
-- (void) sendHTTPGet;
-//- (void) sendHTTPGetSession;
-- (void) saveUserName:(NSString *)userName password:(NSString *)password;
-- (NSString *) getUserName;
-- (NSString *) getPassword;
 
 @end

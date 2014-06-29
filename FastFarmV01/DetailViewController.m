@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "userDetails.h"
 
 #define deg2Rad(x) (M_PI * x / 180.0)
 uint16_t x=20,y=80;
@@ -99,6 +100,9 @@ int c,l,animation_l,stepChange;
 -(void)viewDidAppear:(BOOL)animated
 {
    
+   NSString *titleString = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"TankName"]];
+   self.title = titleString;
+   
    NSString *levelStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"Level"]];
    UITextView* level = [[UITextView alloc] initWithFrame:CGRectMake(x+26, y+85, 70, 40)];
    level.font = [UIFont systemFontOfSize:15];
@@ -138,9 +142,10 @@ int c,l,animation_l,stepChange;
 
    
    NSString *dateStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"DateTime"]];
-   NSArray *dateItems = [dateStr componentsSeparatedByString:@"T"];
-   self.dateLabel.text = [dateItems objectAtIndex:0];
-   self.timeLabel.text = [dateItems objectAtIndex:1];
+   userDetails *user = [userDetails alloc];
+   //NSArray *dateItems = [dateStr componentsSeparatedByString:@"T"];
+   self.dateLabel.text = [user humanDateFromString:dateStr];
+   self.timeLabel.text = [user humanTimeFromString:dateStr];
 
    
    //[UIView beginAnimations:nil context:NULL];

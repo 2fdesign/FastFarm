@@ -9,16 +9,38 @@
 #import "iLevelViewController.h"
 
 @interface iLevelViewController ()
-
+{
+   NSMutableArray *_fuelData;
+}
 @end
 
 @implementation iLevelViewController
+
+#pragma mark - httpInterfaceDelegate Protocol methods
+
+-(void) httpNewData:(NSMutableArray *)data
+{
+   _fuelData = data;
+   NSDictionary *object = _fuelData[0];
+   NSString *dateStr = [NSString stringWithFormat:@"%@",[object objectForKey:@"DateTime"]];
+   userDetails *user = [userDetails alloc];
+   _labelLastUpdate.text = [user humanDateAndTimeFromString:dateStr];
+}
 
 - (void)awakeFromNib
 {
    [super awakeFromNib];
    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
    self.navigationItem.titleView = img;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+   userDetails *user = [userDetails alloc];
+   httpInterface *http = [[httpInterface alloc] initWithDelegate:self];
+   [http getFuelDataForUser:[user getUserName] password:[user getPassword]];
+   
+   [super viewWillAppear:animated];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

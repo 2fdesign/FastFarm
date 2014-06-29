@@ -10,4 +10,15 @@
 
 @interface LoginViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UIButton *btnLogin;
+@property (nonatomic, retain) IBOutlet UIButton *btnForgotPassword;
+@property (nonatomic, retain) IBOutlet UITextField *textUser;
+@property (nonatomic, retain) IBOutlet UITextField *textPassword;
+@property (nonatomic, retain) IBOutlet UISwitch *switchRembmberPassword;
+
+-(IBAction) btnLoginPress: (id) sender;
+-(IBAction) btnForgotPasswordPress: (id) sender;
+-(IBAction) backgroundPress: (id) sender;
+
+
 @end

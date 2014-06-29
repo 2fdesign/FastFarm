@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "httpInterface.h"
+#import "userDetails.h"
 
-@interface iLevelViewController : UIViewController
+@interface iLevelViewController : UIViewController <httpInterfaceDelegate>
+
+@property (nonatomic, retain) IBOutlet UILabel *labelLastUpdate;
 
 @end

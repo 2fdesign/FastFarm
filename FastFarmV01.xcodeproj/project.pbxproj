@@ -11,6 +11,8 @@
 		D4760E5F19582FC200AA81B2 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E5E19582FC200AA81B2 /* AboutViewController.m */; };
 		D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E6119582FD700AA81B2 /* LoginViewController.m */; };
 		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
+		D4D244F2195FFD180023832C /* httpInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F1195FFD180023832C /* httpInterface.m */; };
+		D4D244F519601B240023832C /* userDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F419601B240023832C /* userDetails.m */; };
 		D4D2B0F4193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
 		D4D2B0F6193DEC1A00FCE4DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */; };
 		D4D2B0F8193DEC1A00FCE4DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */; };
@@ -46,6 +48,10 @@
 		D4760E6019582FD700AA81B2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D4760E6119582FD700AA81B2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
+		D4D244F0195FFD180023832C /* httpInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpInterface.h; sourceTree = "<group>"; };
+		D4D244F1195FFD180023832C /* httpInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpInterface.m; sourceTree = "<group>"; };
+		D4D244F319601B240023832C /* userDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetails.h; sourceTree = "<group>"; };
+		D4D244F419601B240023832C /* userDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userDetails.m; sourceTree = "<group>"; };
 		D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastFarmV01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +130,17 @@
 			name = "iLevel Tab";
 			sourceTree = "<group>";
 		};
+		D4D244EF195FFCD20023832C /* http Interface */ = {
+			isa = PBXGroup;
+			children = (
+				D4D244F0195FFD180023832C /* httpInterface.h */,
+				D4D244F1195FFD180023832C /* httpInterface.m */,
+				D4D244F319601B240023832C /* userDetails.h */,
+				D4D244F419601B240023832C /* userDetails.m */,
+			);
+			name = "http Interface";
+			sourceTree = "<group>";
+		};
 		D4D2B0E7193DEC1A00FCE4DB = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +174,7 @@
 		D4D2B0F9193DEC1A00FCE4DB /* FastFarmV01 */ = {
 			isa = PBXGroup;
 			children = (
+				D4D244EF195FFCD20023832C /* http Interface */,
 				D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */,
 				D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */,
 				D4D2B105193DEC1A00FCE4DB /* Main.storyboard */,
@@ -303,10 +321,12 @@
 				D4760E5F19582FC200AA81B2 /* AboutViewController.m in Sources */,
 				D4D2B104193DEC1A00FCE4DB /* AppDelegate.m in Sources */,
 				D4D2B10A193DEC1A00FCE4DB /* FuelViewController.m in Sources */,
+				D4D244F2195FFD180023832C /* httpInterface.m in Sources */,
 				D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */,
 				D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */,
 				D4D2B100193DEC1A00FCE4DB /* main.m in Sources */,
 				D4D2B10D193DEC1A00FCE4DB /* DetailViewController.m in Sources */,
+				D4D244F519601B240023832C /* userDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
