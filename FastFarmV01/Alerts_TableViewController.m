@@ -50,8 +50,8 @@
     [self.tableView addSubview:_refreshControl];
     [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
    
-    UIEdgeInsets inset = UIEdgeInsetsMake(64, 0, 0, 0);
-    self.tableView.contentInset = inset;
+    //UIEdgeInsets inset = UIEdgeInsetsMake(64, 0, 0, 0);
+    //self.tableView.contentInset = inset;
    
     _http1 = [[httpInterface alloc] initWithDelegate:self];
 }

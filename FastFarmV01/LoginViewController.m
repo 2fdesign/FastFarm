@@ -35,9 +35,9 @@
 
 - (void)awakeFromNib
 {
-   [super awakeFromNib];
-   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.navigationItem.titleView = img;
+   //[super awakeFromNib];
+   //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   //self.navigationItem.titleView = img;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -56,6 +56,10 @@
     _textUser.text = [user getUserName];
     _textPassword.text = [user getPassword];
     //NSLog(@"Length: %d",userName.length);
+    //if ([[user isUserRemembered] isEqualToString:@"0"])
+    //   [_switchRememberPassword setOn:FALSE];
+    //else
+    //   [_switchRememberPassword setOn:TRUE];
     if ((_textUser.text.length > 0) && (_textPassword.text.length > 0))
     {
        [self btnLoginPress:NULL];
@@ -109,12 +113,22 @@
    [_textUser resignFirstResponder];
    [_textPassword resignFirstResponder];
    //[self performSegueWithIdentifier: @"LoginSegue" sender: self];  // Temp until Sever fixed
+   [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.fastfarm.co.nz/account/forgotpassword"]];
 }
 
 -(IBAction) backgroundPress: (id) sender
 {
    [_textUser resignFirstResponder];
    [_textPassword resignFirstResponder];
+}
+
+-(IBAction) switchRemember: (id) sender
+{
+   userDetails *user = [userDetails alloc];
+   if (_switchRememberPassword.on)
+      [user saveIsUserRemembered:@"1"];
+   else
+      [user saveIsUserRemembered:@"0"];
 }
 
 /*

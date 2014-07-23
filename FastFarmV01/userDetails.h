@@ -10,12 +10,15 @@
 
 @interface userDetails : NSObject
 
+- (void) saveIsUserRemembered:(NSString *)userRemembered;
+-(NSString *) isUserRemembered;
 - (void) saveUserName:(NSString *)userName password:(NSString *)password;
 -(NSString *) getUserName;
 -(NSString *) getPassword;
 -(NSString *) humanDateAndTimeFromString:(NSString *)stringDate;
 -(NSString *) humanDateFromString:(NSString *)stringDate;
 -(NSString *) humanTimeFromString:(NSString *)stringDate;
+
 
 
 @end

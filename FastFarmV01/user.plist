@@ -4,6 +4,8 @@
 <dict>
 	<key>password</key>
 	<string></string>
+	<key>remember</key>
+	<string>1</string>
 	<key>user</key>
 	<string></string>
 </dict>

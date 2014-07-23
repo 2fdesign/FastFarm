@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "userDetails.h"
 
+
 #define deg2Rad(x) (M_PI * x / 180.0)
 uint16_t x=70,y=70;
 int c,l,animation_l,stepChange;
@@ -65,8 +66,80 @@ int c,l,animation_l,stepChange;
 
    [self.view setBackgroundColor:[UIColor whiteColor]];
    
+   
+   UIButton *orderButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60.0f, 30.0f)];
+   [orderButton setTitle:@"Order" forState:UIControlStateNormal];
+   [orderButton setTitleColor:[UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
+   [orderButton setTitleColor:[UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:0.2] forState:UIControlStateHighlighted];
+   [orderButton addTarget:self action:@selector(orderFuel) forControlEvents:UIControlEventTouchUpInside];
+   UIBarButtonItem *ButtonItem = [[UIBarButtonItem alloc] initWithCustomView:orderButton];
+   
+   self.navigationItem.rightBarButtonItem = ButtonItem;
+   
+   //[self.navigationItem setHidesBackButton:YES animated:NO];
+   
    [self configureView];
    
+}
+
+-(void)orderFuel
+{
+   if ([MFMailComposeViewController canSendMail])
+   {
+      MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+      
+      mailer.mailComposeDelegate = self;
+      
+      [mailer setSubject:[NSString stringWithFormat:@"Fuel Order for %@",[_tankData objectForKey:@"TankName"]]];
+      
+      NSArray *toRecipients = [NSArray arrayWithObjects:@"info@2fdesign.co.nz", nil];
+      [mailer setToRecipients:toRecipients];
+      
+      //UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
+      //NSData *imageData = UIImagePNGRepresentation(myImage);
+      //[mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
+      
+      NSString *emailBody = [NSString stringWithFormat:@"Fule Order Requested for %@ %@\n Current Level %@ liters\n Capacity %@ liters\n LTF %@ liters\n",
+                              [_tankData objectForKey:@"TankID"],[_tankData objectForKey:@"TankName"],[_tankData objectForKey:@"Level"],[_tankData objectForKey:@"Capacity"],[_tankData objectForKey:@"LTF"]];
+      [mailer setMessageBody:emailBody isHTML:NO];
+      
+      [self presentViewController:mailer animated:YES completion:nil];
+   }
+   else
+   {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                      message:@"Your device isn't setup to send email"
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles: nil];
+      [alert show];
+   }
+   
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+   switch (result)
+   {
+      case MFMailComposeResultCancelled:
+         NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+         break;
+      case MFMailComposeResultSaved:
+         NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+         break;
+      case MFMailComposeResultSent:
+         NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+         break;
+      case MFMailComposeResultFailed:
+         NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+         break;
+      default:
+         NSLog(@"Mail not sent.");
+         break;
+   }
+   
+   // Remove the mail view
+   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)setGaugeLevel
@@ -107,7 +180,7 @@ int c,l,animation_l,stepChange;
    self.title = titleString;
    
    NSString *levelStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"Level"]];
-   UITextView* level = [[UITextView alloc] initWithFrame:CGRectMake(x+26, y+85, 70, 40)];
+   UITextView* level = [[UITextView alloc] initWithFrame:CGRectMake(x+55, y+100, 70, 40)];
    level.font = [UIFont systemFontOfSize:15];
    level.backgroundColor = [UIColor clearColor];
    level.textAlignment = NSTextAlignmentCenter;
@@ -118,8 +191,8 @@ int c,l,animation_l,stepChange;
    
    
    NSString *capacityStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"Capacity"]];
-   UITextView* capacity = [[UITextView alloc] initWithFrame:CGRectMake(x+26, y+75, 70, 40)];
-   capacity.font = [UIFont systemFontOfSize:8];
+   UITextView* capacity = [[UITextView alloc] initWithFrame:CGRectMake(x+66, y+120, 70, 40)];
+   capacity.font = [UIFont systemFontOfSize:10];
    capacity.backgroundColor = [UIColor clearColor];
    capacity.textAlignment = NSTextAlignmentRight;
    capacity.text = capacityStr;
@@ -128,15 +201,15 @@ int c,l,animation_l,stepChange;
    c = [capacityStr intValue];
    
    NSString *zeroStr = @"0";
-   UITextView* zero = [[UITextView alloc] initWithFrame:CGRectMake(x+31, y+75, 70, 40)];
-   zero.font = [UIFont systemFontOfSize:8];
+   UITextView* zero = [[UITextView alloc] initWithFrame:CGRectMake(x+50, y+120, 70, 40)];
+   zero.font = [UIFont systemFontOfSize:10];
    zero.backgroundColor = [UIColor clearColor];
    zero.textAlignment = NSTextAlignmentLeft;
    zero.text = zeroStr;
    [self.view addSubview:zero];
    
    NSString *fluidStr = @"Diesel";
-   UITextView* fluid = [[UITextView alloc] initWithFrame:CGRectMake(x+26, y+18, 70, 40)];
+   UITextView* fluid = [[UITextView alloc] initWithFrame:CGRectMake(x+55, y+28, 70, 40)];
    fluid.font = [UIFont systemFontOfSize:15];
    fluid.backgroundColor = [UIColor clearColor];
    fluid.textAlignment = NSTextAlignmentCenter;
@@ -144,11 +217,10 @@ int c,l,animation_l,stepChange;
    [self.view addSubview:fluid];
 
    
-   NSString *dateStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"DateTime"]];
-   userDetails *user = [userDetails alloc];
-   //NSArray *dateItems = [dateStr componentsSeparatedByString:@"T"];
-   self.dateLabel.text = [user humanDateFromString:dateStr];
-   self.timeLabel.text = [user humanTimeFromString:dateStr];
+   //NSString *dateStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"DateTime"]];
+   //userDetails *user = [userDetails alloc];
+   //self.dateLabel.text = [user humanDateFromString:dateStr];
+   //self.timeLabel.text = [user humanTimeFromString:dateStr];
    
    //[UIView beginAnimations:nil context:NULL];
    //[UIView setAnimationDuration:2];

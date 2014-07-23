@@ -34,6 +34,23 @@
    return [plistDict objectForKey:@"password"];
 }
 
+-(NSString *) isUserRemembered
+{
+   NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+   path = [path stringByAppendingPathComponent:@"user.plist"];
+   NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+   return [plistDict objectForKey:@"remember"];
+}
+
+- (void) saveIsUserRemembered:(NSString *)userRemembered
+{
+   NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+   path = [path stringByAppendingPathComponent:@"user.plist"];
+   NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+   [plistDict setValue:userRemembered forKey: @"remember"];
+   [plistDict writeToFile:path atomically:YES];
+}
+
 -(NSString *) humanDateAndTimeFromString:(NSString *)stringDate
 {
    //NSArray *dateItems = [stringDate componentsSeparatedByString:@"T"];

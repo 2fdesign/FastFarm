@@ -11,7 +11,6 @@
 		D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E6119582FD700AA81B2 /* LoginViewController.m */; };
 		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
 		D4BA7AFA197F2DD500A6A7BD /* Alerts_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */; };
-		D4BA7AFD197F3C9100A6A7BD /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BA7AFC197F3C9100A6A7BD /* MasterViewController.m */; };
 		D4D244F2195FFD180023832C /* httpInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F1195FFD180023832C /* httpInterface.m */; };
 		D4D244F519601B240023832C /* userDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F419601B240023832C /* userDetails.m */; };
 		D4D2B0F4193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
@@ -49,8 +48,6 @@
 		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
 		D4BA7AF8197F2DD500A6A7BD /* Alerts_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts_TableViewController.h; sourceTree = "<group>"; };
 		D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts_TableViewController.m; sourceTree = "<group>"; };
-		D4BA7AFB197F3C9100A6A7BD /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		D4BA7AFC197F3C9100A6A7BD /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		D4D244F0195FFD180023832C /* httpInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpInterface.h; sourceTree = "<group>"; };
 		D4D244F1195FFD180023832C /* httpInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpInterface.m; sourceTree = "<group>"; };
 		D4D244F319601B240023832C /* userDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetails.h; sourceTree = "<group>"; };
@@ -180,8 +177,6 @@
 				D4D244EF195FFCD20023832C /* http Interface */,
 				D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */,
 				D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */,
-				D4BA7AFB197F3C9100A6A7BD /* MasterViewController.h */,
-				D4BA7AFC197F3C9100A6A7BD /* MasterViewController.m */,
 				D4D2B105193DEC1A00FCE4DB /* Main.storyboard */,
 				D4789A4C195834A400674D29 /* Login Landing Page */,
 				D4789A4D195834AE00674D29 /* Dashboard Tab */,
@@ -325,7 +320,6 @@
 			files = (
 				D4BA7AFA197F2DD500A6A7BD /* Alerts_TableViewController.m in Sources */,
 				D4D2B104193DEC1A00FCE4DB /* AppDelegate.m in Sources */,
-				D4BA7AFD197F3C9100A6A7BD /* MasterViewController.m in Sources */,
 				D4D2B10A193DEC1A00FCE4DB /* FuelViewController.m in Sources */,
 				D4D244F2195FFD180023832C /* httpInterface.m in Sources */,
 				D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */,

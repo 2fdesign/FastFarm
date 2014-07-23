@@ -17,12 +17,13 @@
 @property (nonatomic, retain) IBOutlet UIButton *btnForgotPassword;
 @property (nonatomic, retain) IBOutlet UITextField *textUser;
 @property (nonatomic, retain) IBOutlet UITextField *textPassword;
-@property (nonatomic, retain) IBOutlet UISwitch *switchRembmberPassword;
+@property (nonatomic, retain) IBOutlet UISwitch *switchRememberPassword;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loginActivity;
 
 -(IBAction) btnLoginPress: (id) sender;
 -(IBAction) btnForgotPasswordPress: (id) sender;
 -(IBAction) backgroundPress: (id) sender;
+-(IBAction) switchRemember: (id) sender;
 -(IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue;
 
 

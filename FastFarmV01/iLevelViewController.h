@@ -15,6 +15,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *labelLastUpdate;
 -(IBAction) buttonPushing:(id)Sender;
 -(IBAction) buttonPushed:(id)Sender;
+-(IBAction) buttonExternalAppRequested:(id)Sender;
 - (void)setUpImageBackButton;
 
 @end

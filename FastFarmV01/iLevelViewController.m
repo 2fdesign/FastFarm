@@ -45,32 +45,24 @@
    [button setAlpha:(1)];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+-(IBAction) buttonExternalAppRequested:(id)Sender
 {
-   //NSArray *viewControllers = self.tabBarController.viewControllers;
-   //[super viewDidDisappear:animated];
-   //if (viewControllers.count > 1 && [viewControllers objectAtIndex:viewControllers.count-2] == self)
-   //{
-      // View is disappearing because a new view controller was pushed onto the stack
-   //   NSLog(@"New view controller was pushed");
-  // }
-   //else if ([viewControllers indexOfObject:self] == NSNotFound)
-   //{
-      // View is disappearing because it was popped from the stack
-    //  NSLog(@"View controller was popped");
-   //}
-   
-   //NSLog(@"IndexOfObject %d",[self.navigationController.viewControllers indexOfObject:self]);
-   //if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound)
-   //   [self performSegueWithIdentifier:@"unwindToStart" sender:self];
-  
+   UIButton *button = (UIButton*)Sender;
+   if (button.tag == 1)  // Weather
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://m.metservice.com"]];
+   if (button.tag == 2)  // Sports
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.stuff.co.nz/sport"]];
+   if (button.tag == 3)  // Email
+   {
+      
+   }
 }
 
 - (void)awakeFromNib
 {
    [super awakeFromNib];
    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.tabBarController.navigationItem.titleView = img;
+   self.navigationItem.titleView = img;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -102,14 +94,16 @@
    //[backButton setBackgroundImage:backImage  forState:UIControlStateNormal];
    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
    backButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-   [backButton setTitle:@"Logout.." forState:UIControlStateNormal];
+   [backButton setTitle:@"Logout" forState:UIControlStateNormal];
    backButton.titleLabel.font = [UIFont systemFontOfSize:12];
    [backButton setTitleColor:[UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
+   [backButton setTitleColor:[UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:0.2] forState:UIControlStateHighlighted];
    [backButton addTarget:self action:@selector(popCurrentViewController) forControlEvents:UIControlEventTouchUpInside];
    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-   self.tabBarController.navigationItem.leftBarButtonItem = backButtonItem;
    
-   [self.tabBarController.navigationItem setHidesBackButton:YES animated:NO];
+   self.navigationItem.leftBarButtonItem = backButtonItem;
+   
+   [self.navigationItem setHidesBackButton:YES animated:NO];
    
 }
 
@@ -124,10 +118,10 @@
    // Do any additional setup after loading the view.
    //  self.tabBarController.navigationItem.hidesBackButton=YES;
    [self setUpImageBackButton];
-   [super awakeFromNib];
+   //[super awakeFromNib];
    //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
    //self.tabBarController.navigationItem.titleView = img;
-   //[super viewDidLoad];
+   [super viewDidLoad];
 }
 
 
