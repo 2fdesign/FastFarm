@@ -24,8 +24,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-    //self.navigationItem.titleView = img;
+    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+    self.navigationItem.titleView = img;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -119,7 +119,13 @@
    [_refreshControl endRefreshing];
 }
 
+-(void) httpFailure:(NSString *)error
+{
+   
+}
 #pragma mark - Table View
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -163,7 +169,10 @@
 {
 }
 
-
+/*- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   return 100;
+}*/
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath

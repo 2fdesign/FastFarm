@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E5B19581EC600AA81B2 /* iLevelViewController.m */; };
-		D4760E5F19582FC200AA81B2 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E5E19582FC200AA81B2 /* AboutViewController.m */; };
 		D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E6119582FD700AA81B2 /* LoginViewController.m */; };
 		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
+		D4BA7AFA197F2DD500A6A7BD /* Alerts_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */; };
+		D4BA7AFD197F3C9100A6A7BD /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BA7AFC197F3C9100A6A7BD /* MasterViewController.m */; };
 		D4D244F2195FFD180023832C /* httpInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F1195FFD180023832C /* httpInterface.m */; };
 		D4D244F519601B240023832C /* userDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F419601B240023832C /* userDetails.m */; };
 		D4D2B0F4193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
@@ -43,11 +44,13 @@
 /* Begin PBXFileReference section */
 		D4760E5A19581EC600AA81B2 /* iLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iLevelViewController.h; sourceTree = "<group>"; };
 		D4760E5B19581EC600AA81B2 /* iLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iLevelViewController.m; sourceTree = "<group>"; };
-		D4760E5D19582FC200AA81B2 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		D4760E5E19582FC200AA81B2 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		D4760E6019582FD700AA81B2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D4760E6119582FD700AA81B2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
+		D4BA7AF8197F2DD500A6A7BD /* Alerts_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts_TableViewController.h; sourceTree = "<group>"; };
+		D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts_TableViewController.m; sourceTree = "<group>"; };
+		D4BA7AFB197F3C9100A6A7BD /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		D4BA7AFC197F3C9100A6A7BD /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		D4D244F0195FFD180023832C /* httpInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpInterface.h; sourceTree = "<group>"; };
 		D4D244F1195FFD180023832C /* httpInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpInterface.m; sourceTree = "<group>"; };
 		D4D244F319601B240023832C /* userDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetails.h; sourceTree = "<group>"; };
@@ -99,25 +102,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D4789A4B1958349800674D29 /* About Tab */ = {
-			isa = PBXGroup;
-			children = (
-				D4760E5D19582FC200AA81B2 /* AboutViewController.h */,
-				D4760E5E19582FC200AA81B2 /* AboutViewController.m */,
-			);
-			name = "About Tab";
-			sourceTree = "<group>";
-		};
-		D4789A4C195834A400674D29 /* Login Tab */ = {
+		D4789A4C195834A400674D29 /* Login Landing Page */ = {
 			isa = PBXGroup;
 			children = (
 				D4760E6019582FD700AA81B2 /* LoginViewController.h */,
 				D4760E6119582FD700AA81B2 /* LoginViewController.m */,
 			);
-			name = "Login Tab";
+			name = "Login Landing Page";
 			sourceTree = "<group>";
 		};
-		D4789A4D195834AE00674D29 /* iLevel Tab */ = {
+		D4789A4D195834AE00674D29 /* Dashboard Tab */ = {
 			isa = PBXGroup;
 			children = (
 				D4760E5A19581EC600AA81B2 /* iLevelViewController.h */,
@@ -127,7 +121,16 @@
 				D4D2B10B193DEC1A00FCE4DB /* DetailViewController.h */,
 				D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */,
 			);
-			name = "iLevel Tab";
+			name = "Dashboard Tab";
+			sourceTree = "<group>";
+		};
+		D4BA7AF7197F2D9400A6A7BD /* Alerts Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D4BA7AF8197F2DD500A6A7BD /* Alerts_TableViewController.h */,
+				D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */,
+			);
+			name = "Alerts Tab";
 			sourceTree = "<group>";
 		};
 		D4D244EF195FFCD20023832C /* http Interface */ = {
@@ -178,9 +181,11 @@
 				D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */,
 				D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */,
 				D4D2B105193DEC1A00FCE4DB /* Main.storyboard */,
-				D4789A4B1958349800674D29 /* About Tab */,
-				D4789A4C195834A400674D29 /* Login Tab */,
-				D4789A4D195834AE00674D29 /* iLevel Tab */,
+				D4BA7AFB197F3C9100A6A7BD /* MasterViewController.h */,
+				D4BA7AFC197F3C9100A6A7BD /* MasterViewController.m */,
+				D4789A4C195834A400674D29 /* Login Landing Page */,
+				D4789A4D195834AE00674D29 /* Dashboard Tab */,
+				D4BA7AF7197F2D9400A6A7BD /* Alerts Tab */,
 				D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */,
 				D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */,
 				D47641DA194483E9003ED2B3 /* user.plist */,
@@ -318,8 +323,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4760E5F19582FC200AA81B2 /* AboutViewController.m in Sources */,
+				D4BA7AFA197F2DD500A6A7BD /* Alerts_TableViewController.m in Sources */,
 				D4D2B104193DEC1A00FCE4DB /* AppDelegate.m in Sources */,
+				D4BA7AFD197F3C9100A6A7BD /* MasterViewController.m in Sources */,
 				D4D2B10A193DEC1A00FCE4DB /* FuelViewController.m in Sources */,
 				D4D244F2195FFD180023832C /* httpInterface.m in Sources */,
 				D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */,
@@ -393,7 +399,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: R D BECK (6SF2363Y2S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;

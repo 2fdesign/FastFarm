@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
 }
 
+@property (nonatomic, retain) IBOutlet UITableView *detailTable;
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) NSDictionary *tankData;
 @property (nonatomic, retain) IBOutlet UILabel *dateLabel;

@@ -12,6 +12,7 @@
 @protocol httpInterfaceDelegate <NSObject>
 @required
 -(void) httpNewData:(NSMutableArray *)data;
+-(void) httpFailure:(NSString *)error;
 @optional
 //-(void) protocolProgressBarUpdate:(float)progress;
 //-(void) protocolStatusUpdate:(NSString *)text;
@@ -38,7 +39,8 @@
 - (id) initWithDelegate:(id<httpInterfaceDelegate>)delegateObject;
 - (void) loginWithUser:(NSString *)username password:(NSString *)password;
 - (void) getFuelDataForUser:(NSString *)username password:(NSString *)password;
+- (void) getAlertHistoryForUser:(NSString *)username password:(NSString *)password;
 - (void) cancelConnection;
--(void) sendHTTPGet;
+- (void) sendHTTPGetWithURL:(NSString *)urlString;
 
 @end

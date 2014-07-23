@@ -10,7 +10,7 @@
 #import "userDetails.h"
 
 #define deg2Rad(x) (M_PI * x / 180.0)
-uint16_t x=20,y=80;
+uint16_t x=70,y=70;
 int c,l,animation_l,stepChange;
 
 @interface DetailViewController ()
@@ -53,17 +53,20 @@ int c,l,animation_l,stepChange;
    //self.navigationItem.titleView = img;
    
    UIImageView* gaugeBase = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GaugeBase250"]];
-   [gaugeBase setFrame:CGRectMake(x, y, 125, 125)];
+   [gaugeBase setFrame:CGRectMake(x, y, 180, 180)];
    [self.view addSubview:gaugeBase];
    
    _gaugePointer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GaugePointer250"]];
-   [_gaugePointer setFrame:CGRectMake(x, y, 125, 125)];
+   [_gaugePointer setFrame:CGRectMake(x, y, 180, 180)];
 
    [self.view addSubview:_gaugePointer];
    [_gaugePointer.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
    _gaugePointer.transform = CGAffineTransformMakeRotation(deg2Rad(-225));
 
+   [self.view setBackgroundColor:[UIColor whiteColor]];
+   
    [self configureView];
+   
 }
 
 -(void)setGaugeLevel
@@ -146,7 +149,6 @@ int c,l,animation_l,stepChange;
    //NSArray *dateItems = [dateStr componentsSeparatedByString:@"T"];
    self.dateLabel.text = [user humanDateFromString:dateStr];
    self.timeLabel.text = [user humanTimeFromString:dateStr];
-
    
    //[UIView beginAnimations:nil context:NULL];
    //[UIView setAnimationDuration:2];
@@ -165,6 +167,45 @@ int c,l,animation_l,stepChange;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)awakeFromNib
+{
+   [super awakeFromNib];
+   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   self.navigationItem.titleView = img;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+   return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+   
+   if (indexPath.row == 0)
+   {
+      cell.textLabel.text = @"Tank Capacity";
+      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"Capacity"]];
+   }
+   else if (indexPath.row == 1)
+   {
+      cell.textLabel.text = @"Current Level";
+      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"Level"]];
+   }
+   else
+   {
+      cell.textLabel.text = @"TITLE";
+      cell.detailTextLabel.text = @"subtitle";
+   }
+   return cell;
 }
 
 @end

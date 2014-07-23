@@ -8,12 +8,28 @@
 
 #import "LoginViewController.h"
 #import "userDetails.h"
+#import "iLevelViewController.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+
+#pragma mark - httpInterfaceDelegate Protocol methods
+
+-(void) httpNewData:(NSMutableArray *)data
+{
+   [self performSegueWithIdentifier: @"LoginSegue" sender: self];
+}
+
+-(void) httpFailure:(NSString *)error
+{
+   //iLevelViewController *vc = [[iLevelViewController alloc] initWithNibName:@"iLevelViewController" bundle:nil];
+   //[[self navigationController] pushViewController:vc animated:YES];
+   UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Connection Failed" message:@"Unable to connect to FastFarm" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   [errorView show];
+}
 
 - (void)awakeFromNib
 {
@@ -34,7 +50,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    userDetails *user = [userDetails alloc];
+    _textUser.text = [user getUserName];
+    _textPassword.text = [user getPassword];
+    //NSLog(@"Length: %d",userName.length);
+    if ((_textUser.text.length > 0) && (_textPassword.text.length > 0))
+    {
+       [self btnLoginPress:NULL];
+    }
+   
+        // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +76,12 @@
    _textPassword.text = [user getPassword];
 }
 
+- (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
+{
+   NSLog(@"Rolled back");
+   userDetails *user = [userDetails alloc];
+   [user saveUserName:@"" password:@""];
+}
 
 -(IBAction) btnLoginPress: (id) sender
 {
@@ -58,12 +89,17 @@
    [_textPassword resignFirstResponder];
    userDetails *user = [userDetails alloc];
    [user saveUserName:_textUser.text password:_textPassword.text];
+
+   httpInterface *http = [[httpInterface alloc] initWithDelegate:self];
+   [http getFuelDataForUser:[user getUserName] password:[user getPassword]];
+   
 }
 
 -(IBAction) btnForgotPasswordPress: (id) sender
 {
    [_textUser resignFirstResponder];
    [_textPassword resignFirstResponder];
+   [self performSegueWithIdentifier: @"LoginSegue" sender: self];  // Temp until Sever fixed
 }
 
 -(IBAction) backgroundPress: (id) sender

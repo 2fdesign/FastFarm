@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "httpInterface.h"
+#import "userDetails.h"
 
-@interface LoginViewController : UIViewController
+
+@interface LoginViewController : UIViewController <httpInterfaceDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *btnLogin;
 @property (nonatomic, retain) IBOutlet UIButton *btnForgotPassword;
@@ -19,6 +22,7 @@
 -(IBAction) btnLoginPress: (id) sender;
 -(IBAction) btnForgotPasswordPress: (id) sender;
 -(IBAction) backgroundPress: (id) sender;
+-(IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue;
 
 
 @end

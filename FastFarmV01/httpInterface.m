@@ -69,19 +69,42 @@ uint16_t httpMessage;
    _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
    
    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-   [self sendHTTPGet];
+   [self sendHTTPGetWithURL:@"http://api.m2mnz.com/v1.2/tanks/"];
 }
 
--(void) sendHTTPGet
+- (void) getAlertHistoryForUser:(NSString *)username password:(NSString *)password
+{
+   NSMutableArray *data = [[NSMutableArray alloc] init];
+   _objects = data;
+   NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username, password];
+   NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
+   NSString *base64String = [[NSString alloc]init];
+   if ([base64String respondsToSelector:@selector(base64EncodedStringWithOptions:)])
+   {
+      base64String = [plainData base64EncodedStringWithOptions:0];  // iOS 7+
+   }
+   else
+   {
+      base64String = [plainData base64Encoding];                              // pre iOS7
+   }
+   _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
+   
+   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+   [self sendHTTPGetWithURL:@"http://api.m2mnz.com/v1.2/alerts/"];
+   
+}
+
+-(void) sendHTTPGetWithURL:(NSString *)urlString
 {
    [_connection cancel];
    NSMutableData *data = [[NSMutableData alloc] init];
    _receivedData = data;
    statusCode = 0;
-   NSURL *url = [NSURL URLWithString:@"http://api.m2mnz.com/v1.1/tanks/"];
+   NSURL *url = [NSURL URLWithString:urlString];
    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
    [request addValue:_encodedLoginData forHTTPHeaderField:@"Authorization"];
    NSURLConnection *newConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+   NSLog(@"%@",newConnection);
    _connection = newConnection;
    [_connection start];
 }
@@ -117,7 +140,7 @@ uint16_t httpMessage;
    NSDictionary *allHeaders = [httpResponse allHeaderFields];
    NSLog(@"allHeaders %@",allHeaders);
    statusCode = [httpResponse statusCode];
-   NSLog(@"StatusCode: %d",statusCode);
+   NSLog(@"StatusCode: %d",(int)statusCode);
    if ((statusCode == 200) || (statusCode == 201))
    {
    }
@@ -157,7 +180,7 @@ uint16_t httpMessage;
    }
    else
    {
-      NSLog(@"No Server Found, or server down. Status Code=%ld",(long)statusCode);
+      [[self interfaceDelegate] httpFailure:@"Unable to Login"];
    }
    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
    
