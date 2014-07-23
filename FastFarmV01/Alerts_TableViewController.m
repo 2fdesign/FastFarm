@@ -7,12 +7,18 @@
 //
 
 #import "Alerts_TableViewController.h"
+#import "httpInterface.h"
+#import "userDetails.h"
 
 @interface Alerts_TableViewController ()
-
+{
+   NSMutableArray *_objects;
+}
 @end
 
 @implementation Alerts_TableViewController
+
+@synthesize refreshControl = _refreshControl;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,15 +29,39 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+   [self refreshTable];
+   [super viewDidAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+   [_http1 cancelConnection];
+   [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   
+    _refreshControl = [[UIRefreshControl alloc]init];
+    //_refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [self.tableView addSubview:_refreshControl];
+    [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+   
+    UIEdgeInsets inset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.tableView.contentInset = inset;
+   
+    _http1 = [[httpInterface alloc] initWithDelegate:self];
+}
+
+- (void)refreshTable
+{
+   userDetails *user = [userDetails alloc];
+   
+   //httpInterface *http = [[httpInterface alloc] initWithDelegate:self];
+   [_http1 getAlertHistoryForUser:[user getUserName] password:[user getPassword]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,32 +78,51 @@
    self.navigationItem.titleView = img;
 }
 
+#pragma mark - httpInterfaceDelegate Protocol methods
+
+-(void) httpNewData:(NSMutableArray *)data
+{
+   _objects = data;
+   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+   NSLog(@"httpNewAlertData %@", data);
+   [_refreshControl endRefreshing];
+}
+
+-(void) httpFailure:(NSString *)error
+{
+   
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+   return [_objects count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+   
+   NSString *tankName = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"]];
+   NSString *alertDesc = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"AlertDesc"]];
+   NSString *dateStr = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"AlertDateTime"]];
+   userDetails *user = [userDetails alloc];
+   NSString *readableDateStr = [NSString stringWithFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
+   
+   cell.textLabel.text = tankName;
+   cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",alertDesc,readableDateStr];
+   
+   return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

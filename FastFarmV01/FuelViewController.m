@@ -60,6 +60,7 @@
    
    _http1 = [[httpInterface alloc] initWithDelegate:self];
    
+      
    //UINavigationBar *navBar = self.navigationController.navigationBar;
    //UIImage *image = [UIImage imageNamed:@"yourNavBarBackground.png"];
    //[navBar setBackgroundImage:image];
@@ -150,7 +151,7 @@
    float c = [capacity floatValue];
    float l = [level floatValue];
    float percent = l/c * 100;
-   NSString *str = [[NSString alloc] initWithFormat:@"Tank is %d%% full",(int)(percent)];
+   NSString *str = [[NSString alloc] initWithFormat:@"%d Liters (%d%%)",(int)(l),(int)(percent)];
    //NSLog(@"%@",str);
    cell.detailTextLabel.text = str;
    //cell.imageView.image = [UIImage imageNamed:@"GaugeBase250"];

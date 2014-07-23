@@ -192,18 +192,34 @@ int c,l,animation_l,stepChange;
    
    if (indexPath.row == 0)
    {
+      cell.textLabel.text = @"Last Updated";
+      NSString *dateStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"DateTime"]];
+      userDetails *user = [userDetails alloc];
+      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
+   }
+   else if (indexPath.row == 1)
+   {
       cell.textLabel.text = @"Tank Capacity";
       cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"Capacity"]];
    }
-   else if (indexPath.row == 1)
+   else if (indexPath.row == 2)
    {
       cell.textLabel.text = @"Current Level";
       cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"Level"]];
    }
-   else
+   else if (indexPath.row == 3)
    {
-      cell.textLabel.text = @"TITLE";
-      cell.detailTextLabel.text = @"subtitle";
+      cell.textLabel.text = @"LTF";
+      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"LTF"]];
+   }
+   else if (indexPath.row == 4)
+   {
+      cell.textLabel.text = @"Alert Status";
+      NSString *alertStatus = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"IsActiveAlerts"]];
+      if ([alertStatus isEqualToString:@"0"])
+         cell.detailTextLabel.text = @"None";
+      else
+         cell.detailTextLabel.text = @"ALERT Active";
    }
    return cell;
 }

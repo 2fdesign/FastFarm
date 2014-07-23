@@ -18,6 +18,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *textUser;
 @property (nonatomic, retain) IBOutlet UITextField *textPassword;
 @property (nonatomic, retain) IBOutlet UISwitch *switchRembmberPassword;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loginActivity;
 
 -(IBAction) btnLoginPress: (id) sender;
 -(IBAction) btnForgotPasswordPress: (id) sender;

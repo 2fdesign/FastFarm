@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "httpInterface.h"
 
-@interface Alerts_TableViewController : UITableViewController
+@class httpInterface;
+
+@interface Alerts_TableViewController : UITableViewController <httpInterfaceDelegate>
+
+@property (retain, nonatomic) UIRefreshControl *refreshControl;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) httpInterface *http1;
+
 
 @end
