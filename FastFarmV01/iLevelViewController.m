@@ -20,11 +20,27 @@
 
 -(void) httpNewData:(NSMutableArray *)data
 {
+   long fuelSum = 0;
    _fuelData = data;
-   NSDictionary *object = _fuelData[0];
-   NSString *dateStr = [NSString stringWithFormat:@"%@",[object objectForKey:@"DateTime"]];
-   userDetails *user = [userDetails alloc];
-   _labelLastUpdate.text = [user humanDateAndTimeFromString:dateStr];
+   if ([_fuelData count] == 1)
+   {
+      NSDictionary *object = _fuelData[0];
+      NSString *fuelLevelStr = [NSString stringWithFormat:@"Tank Level: %@ Liters",[object objectForKey:@"Level"]];
+      //NSString *dateStr = [NSString stringWithFormat:@"%@",[object objectForKey:@"DateTime"]];
+      //userDetails *user = [userDetails alloc];
+      _labelLastUpdate.text = fuelLevelStr;
+   }
+   else if ([_fuelData count] > 1)
+   {
+      for (int x=0; x<[_fuelData count]; x++)
+      {
+         NSDictionary *object = _fuelData[x];
+         fuelSum += [[object objectForKey:@"Level"] longValue];
+      }
+      fuelSum /= [_fuelData count];
+      NSString *fuelLevelStr = [NSString stringWithFormat:@"Avg Level: %ld Liters",fuelSum];
+      _labelLastUpdate.text = fuelLevelStr;
+   }
 }
 -(void) httpFailure:(NSString *)error
 {

@@ -10,6 +10,7 @@
 		D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E5B19581EC600AA81B2 /* iLevelViewController.m */; };
 		D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E6119582FD700AA81B2 /* LoginViewController.m */; };
 		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
+		D497E0131985242800E430FC /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D497E0121985242800E430FC /* AboutViewController.m */; };
 		D4BA7AFA197F2DD500A6A7BD /* Alerts_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */; };
 		D4D244F2195FFD180023832C /* httpInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F1195FFD180023832C /* httpInterface.m */; };
 		D4D244F519601B240023832C /* userDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F419601B240023832C /* userDetails.m */; };
@@ -46,6 +47,8 @@
 		D4760E6019582FD700AA81B2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D4760E6119582FD700AA81B2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
+		D497E0111985242800E430FC /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		D497E0121985242800E430FC /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		D4BA7AF8197F2DD500A6A7BD /* Alerts_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts_TableViewController.h; sourceTree = "<group>"; };
 		D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts_TableViewController.m; sourceTree = "<group>"; };
 		D4D244F0195FFD180023832C /* httpInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpInterface.h; sourceTree = "<group>"; };
@@ -121,6 +124,15 @@
 			name = "Dashboard Tab";
 			sourceTree = "<group>";
 		};
+		D497E0101985240600E430FC /* About Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D497E0111985242800E430FC /* AboutViewController.h */,
+				D497E0121985242800E430FC /* AboutViewController.m */,
+			);
+			name = "About Tab";
+			sourceTree = "<group>";
+		};
 		D4BA7AF7197F2D9400A6A7BD /* Alerts Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +186,7 @@
 		D4D2B0F9193DEC1A00FCE4DB /* FastFarmV01 */ = {
 			isa = PBXGroup;
 			children = (
+				D497E0101985240600E430FC /* About Tab */,
 				D4D244EF195FFCD20023832C /* http Interface */,
 				D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */,
 				D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */,
@@ -324,6 +337,7 @@
 				D4D244F2195FFD180023832C /* httpInterface.m in Sources */,
 				D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */,
 				D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */,
+				D497E0131985242800E430FC /* AboutViewController.m in Sources */,
 				D4D2B100193DEC1A00FCE4DB /* main.m in Sources */,
 				D4D2B10D193DEC1A00FCE4DB /* DetailViewController.m in Sources */,
 				D4D244F519601B240023832C /* userDetails.m in Sources */,
@@ -411,7 +425,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "14FF2FAE-A343-455B-832F-0ABAFD4DCB39";
+				PROVISIONING_PROFILE = "747B9986-662E-44D3-8078-A3BF65A5C205";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = NO;
 			};
@@ -445,7 +459,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PROVISIONING_PROFILE = "14FF2FAE-A343-455B-832F-0ABAFD4DCB39";
+				PROVISIONING_PROFILE = "747B9986-662E-44D3-8078-A3BF65A5C205";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = NO;
 				VALIDATE_PRODUCT = YES;
@@ -458,12 +472,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
 				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "14FF2FAE-A343-455B-832F-0ABAFD4DCB39";
+				PROVISIONING_PROFILE = "747B9986-662E-44D3-8078-A3BF65A5C205";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -475,12 +490,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
 				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "14FF2FAE-A343-455B-832F-0ABAFD4DCB39";
+				PROVISIONING_PROFILE = "747B9986-662E-44D3-8078-A3BF65A5C205";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

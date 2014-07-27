@@ -23,9 +23,9 @@
 
 - (void)awakeFromNib
 {
-    [super awakeFromNib];
-    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-    self.navigationItem.titleView = img;
+    //[super awakeFromNib];
+    //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+    //self.navigationItem.titleView = img;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -154,6 +154,14 @@
    NSString *str = [[NSString alloc] initWithFormat:@"%d Liters (%d%%)",(int)(l),(int)(percent)];
    //NSLog(@"%@",str);
    cell.detailTextLabel.text = str;
+   
+   NSString *alertStr = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"IsActiveAlerts"]];
+   if ([alertStr isEqualToString:@"1"])
+   {
+      UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(4, 21, 7, 25)];
+      imv.image=[UIImage imageNamed:@"alertImage"];
+      [cell addSubview:imv];
+   }
    //cell.imageView.image = [UIImage imageNamed:@"GaugeBase250"];
    return cell;
 }

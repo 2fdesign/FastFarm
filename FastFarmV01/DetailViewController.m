@@ -180,7 +180,7 @@ int c,l,animation_l,stepChange;
    self.title = titleString;
    
    NSString *levelStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"Level"]];
-   UITextView* level = [[UITextView alloc] initWithFrame:CGRectMake(x+55, y+100, 70, 40)];
+   UITextView* level = [[UITextView alloc] initWithFrame:CGRectMake(x+55, y+96, 70, 40)];
    level.font = [UIFont systemFontOfSize:15];
    level.backgroundColor = [UIColor clearColor];
    level.textAlignment = NSTextAlignmentCenter;
@@ -243,9 +243,9 @@ int c,l,animation_l,stepChange;
 
 - (void)awakeFromNib
 {
-   [super awakeFromNib];
-   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.navigationItem.titleView = img;
+   //[super awakeFromNib];
+   //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   //self.navigationItem.titleView = img;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
