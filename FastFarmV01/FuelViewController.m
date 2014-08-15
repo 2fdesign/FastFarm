@@ -140,12 +140,64 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+   static NSString *CellIdentifier = @"FuelTableCell";
+   FuelViewTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   
+   if (cell == nil)
+   {
+      cell = [[FuelViewTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+   }
+   
+   NSNumber *capacity = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
+   NSNumber *level = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Level"];
+   float c = [capacity floatValue];
+   float l = [level floatValue];
+   float percent = l/c * 100;
+   
+   NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+   [numberFormatter setFormatterBehavior: NSNumberFormatterBehavior10_4];
+   [numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
+   NSString *strLevel = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: (int)(l)]];
+   
+   NSString *strPercent = [[NSString alloc] initWithFormat:@"%d%%",(int)(percent)];
+   
+   
+   cell.labelTitle.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"];
+   
+   userDetails *user = [userDetails alloc];
+   cell.labelupdateTime.text = [user humanDateAndTimeFromString:[[_objects objectAtIndex:indexPath.row]objectForKey:@"DateTime"]];
+   
+   //cell.labelupdateTime.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"DateTime"];
+   cell.labelLitres.text = strLevel;
+   cell.labelPercentage.text = strPercent;
+   
+   NSString *alertStr = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"IsActiveAlerts"]];
+   if ([alertStr isEqualToString:@"1"])
+   {
+      cell.labelAlert.hidden = false;
+      cell.imageAlert.hidden = false;
+   }
+   else
+   {
+      cell.labelAlert.hidden = true;
+      cell.imageAlert.hidden = true;
+   }
+   //NSNumber *capacity = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
+   //NSNumber *level = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Level"];
+   //float c = [capacity floatValue];
+   //float l = [level floatValue];
+   //float percent = l/c * 100;
+   //NSString *str = [[NSString alloc] initWithFormat:@"%d%%",(int)(percent)];
+   
+   //cell.labelPercentage.text = str;
+   
+   
+   //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
    //if (cell == nil)  //cell == nil never called in storyboard UI
    //{
    //   cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
    //}
-   cell.textLabel.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"];
+ /*  cell.textLabel.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"];
    NSNumber *capacity = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
    NSNumber *level = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Level"];
    float c = [capacity floatValue];
@@ -162,7 +214,7 @@
       imv.image=[UIImage imageNamed:@"alertImage"];
       [cell addSubview:imv];
    }
-   //cell.imageView.image = [UIImage imageNamed:@"GaugeBase250"];
+   //cell.imageView.image = [UIImage imageNamed:@"GaugeBase250"];*/
    return cell;
 }
 

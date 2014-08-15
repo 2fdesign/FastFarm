@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "httpInterface.h"
+#import "FuelViewTableCell.h"
 
 @class httpInterface;
 
