@@ -74,8 +74,8 @@
 - (void)awakeFromNib
 {
    [super awakeFromNib];
-   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.navigationItem.titleView = img;
+   //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   //self.navigationItem.titleView = img;
 }
 
 #pragma mark - httpInterfaceDelegate Protocol methods
@@ -109,16 +109,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+   static NSString *CellIdentifier = @"AlertTableCell";
+   AlertViewTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   
+   if (cell == nil)
+   {
+      cell = [[AlertViewTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+   }
    
    NSString *tankName = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"]];
    NSString *alertDesc = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"AlertDesc"]];
    NSString *dateStr = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"AlertDateTime"]];
-   userDetails *user = [userDetails alloc];
-   NSString *readableDateStr = [NSString stringWithFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
    
-   cell.textLabel.text = tankName;
-   cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",alertDesc,readableDateStr];
+   userDetails *user = [userDetails alloc];
+   NSString *dateDisplayStr = @"Alert received ";
+   dateDisplayStr = [dateDisplayStr stringByAppendingFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
+   
+   cell.labelTitle.text = tankName;
+   cell.labelupdateTime.text = dateDisplayStr;
+   cell.labelAlert.text = alertDesc;
    
    return cell;
 }

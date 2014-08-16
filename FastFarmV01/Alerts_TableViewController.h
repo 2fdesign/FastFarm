@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "httpInterface.h"
+#import "AlertViewTableCell.h"
 
 @class httpInterface;
 

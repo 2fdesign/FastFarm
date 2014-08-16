@@ -10,6 +10,7 @@
 		D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E5B19581EC600AA81B2 /* iLevelViewController.m */; };
 		D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4760E6119582FD700AA81B2 /* LoginViewController.m */; };
 		D47641DB194483E9003ED2B3 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47641DA194483E9003ED2B3 /* user.plist */; };
+		D47CD845199F0170002F9139 /* AlertViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D47CD844199F0170002F9139 /* AlertViewTableCell.m */; };
 		D497E0131985242800E430FC /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D497E0121985242800E430FC /* AboutViewController.m */; };
 		D4BA7AFA197F2DD500A6A7BD /* Alerts_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */; };
 		D4D244F2195FFD180023832C /* httpInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D244F1195FFD180023832C /* httpInterface.m */; };
@@ -48,6 +49,8 @@
 		D4760E6019582FD700AA81B2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D4760E6119582FD700AA81B2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D47641DA194483E9003ED2B3 /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
+		D47CD843199F0170002F9139 /* AlertViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewTableCell.h; sourceTree = "<group>"; };
+		D47CD844199F0170002F9139 /* AlertViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewTableCell.m; sourceTree = "<group>"; };
 		D497E0111985242800E430FC /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		D497E0121985242800E430FC /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		D4BA7AF8197F2DD500A6A7BD /* Alerts_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts_TableViewController.h; sourceTree = "<group>"; };
@@ -128,6 +131,15 @@
 			name = "Dashboard Tab";
 			sourceTree = "<group>";
 		};
+		D47CD846199F0174002F9139 /* Tableview Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D47CD843199F0170002F9139 /* AlertViewTableCell.h */,
+				D47CD844199F0170002F9139 /* AlertViewTableCell.m */,
+			);
+			name = "Tableview Cell";
+			sourceTree = "<group>";
+		};
 		D497E0101985240600E430FC /* About Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +152,7 @@
 		D4BA7AF7197F2D9400A6A7BD /* Alerts Tab */ = {
 			isa = PBXGroup;
 			children = (
+				D47CD846199F0174002F9139 /* Tableview Cell */,
 				D4BA7AF8197F2DD500A6A7BD /* Alerts_TableViewController.h */,
 				D4BA7AF9197F2DD500A6A7BD /* Alerts_TableViewController.m */,
 			);
@@ -350,6 +363,7 @@
 				D4D2B10A193DEC1A00FCE4DB /* FuelViewController.m in Sources */,
 				D4D244F2195FFD180023832C /* httpInterface.m in Sources */,
 				D4760E5C19581EC600AA81B2 /* iLevelViewController.m in Sources */,
+				D47CD845199F0170002F9139 /* AlertViewTableCell.m in Sources */,
 				D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */,
 				D497E0131985242800E430FC /* AboutViewController.m in Sources */,
 				D4D2B100193DEC1A00FCE4DB /* main.m in Sources */,

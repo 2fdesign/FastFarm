@@ -70,15 +70,44 @@
       [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.stuff.co.nz/sport"]];
    if (button.tag == 3)  // Email
    {
-      
+      if ([MFMailComposeViewController canSendMail])
+      {
+         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+         
+         mailer.mailComposeDelegate = self;
+         
+         [mailer setSubject:[NSString stringWithFormat:@"Fuel Order Requested"]];
+         
+         NSArray *toRecipients = [NSArray arrayWithObjects:@"info@2fdesign.co.nz", nil];
+         [mailer setToRecipients:toRecipients];
+         
+         //UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
+         //NSData *imageData = UIImagePNGRepresentation(myImage);
+         //[mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
+         
+         NSString *emailBody = @"Fuel Order Requested for [please fill in details here]";
+                                
+         [mailer setMessageBody:emailBody isHTML:NO];
+         
+         [self presentViewController:mailer animated:YES completion:nil];
+      }
+      else
+      {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                         message:@"Your device isn't setup to send email"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+         [alert show];
+      }
    }
 }
 
 - (void)awakeFromNib
 {
    [super awakeFromNib];
-   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.navigationItem.titleView = img;
+   //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   //self.navigationItem.titleView = img;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -121,6 +150,31 @@
    
    [self.navigationItem setHidesBackButton:YES animated:NO];
    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+   switch (result)
+   {
+      case MFMailComposeResultCancelled:
+         NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+         break;
+      case MFMailComposeResultSaved:
+         NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+         break;
+      case MFMailComposeResultSent:
+         NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+         break;
+      case MFMailComposeResultFailed:
+         NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+         break;
+      default:
+         NSLog(@"Mail not sent.");
+         break;
+   }
+   
+   // Remove the mail view
+   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)popCurrentViewController

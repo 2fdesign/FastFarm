@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "httpInterface.h"
 #import "userDetails.h"
+#import <MessageUI/MessageUI.h>
 
-@interface iLevelViewController : UIViewController <httpInterfaceDelegate>
+@interface iLevelViewController : UIViewController <httpInterfaceDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UILabel *labelLastUpdate;
 -(IBAction) buttonPushing:(id)Sender;

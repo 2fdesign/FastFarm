@@ -167,7 +167,6 @@
    userDetails *user = [userDetails alloc];
    cell.labelupdateTime.text = [user humanDateAndTimeFromString:[[_objects objectAtIndex:indexPath.row]objectForKey:@"DateTime"]];
    
-   //cell.labelupdateTime.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"DateTime"];
    cell.labelLitres.text = strLevel;
    cell.labelPercentage.text = strPercent;
    
@@ -182,39 +181,6 @@
       cell.labelAlert.hidden = true;
       cell.imageAlert.hidden = true;
    }
-   //NSNumber *capacity = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
-   //NSNumber *level = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Level"];
-   //float c = [capacity floatValue];
-   //float l = [level floatValue];
-   //float percent = l/c * 100;
-   //NSString *str = [[NSString alloc] initWithFormat:@"%d%%",(int)(percent)];
-   
-   //cell.labelPercentage.text = str;
-   
-   
-   //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-   //if (cell == nil)  //cell == nil never called in storyboard UI
-   //{
-   //   cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
-   //}
- /*  cell.textLabel.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"];
-   NSNumber *capacity = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Capacity"];
-   NSNumber *level = [[_objects objectAtIndex:indexPath.row]objectForKey:@"Level"];
-   float c = [capacity floatValue];
-   float l = [level floatValue];
-   float percent = l/c * 100;
-   NSString *str = [[NSString alloc] initWithFormat:@"%d Liters (%d%%)",(int)(l),(int)(percent)];
-   //NSLog(@"%@",str);
-   cell.detailTextLabel.text = str;
-   
-   NSString *alertStr = [NSString stringWithFormat:@"%@",[[_objects objectAtIndex:indexPath.row]objectForKey:@"IsActiveAlerts"]];
-   if ([alertStr isEqualToString:@"1"])
-   {
-      UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(4, 21, 7, 25)];
-      imv.image=[UIImage imageNamed:@"alertImage"];
-      [cell addSubview:imv];
-   }
-   //cell.imageView.image = [UIImage imageNamed:@"GaugeBase250"];*/
    return cell;
 }
 

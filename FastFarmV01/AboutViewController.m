@@ -7,6 +7,7 @@
 //
 
 #import "AboutViewController.h"
+#import "userDetails.h"
 
 @interface AboutViewController ()
 
@@ -14,11 +15,19 @@
 
 @implementation AboutViewController
 
+-(IBAction)btnLogoutPressed
+{
+   userDetails *user = [userDetails alloc];
+   [user saveUserName:@"" password:@""];
+   [self.navigationController popToRootViewControllerAnimated:NO];
+   [self performSegueWithIdentifier:@"unwindToStart" sender:self];
+}
+
 - (void)awakeFromNib
 {
    [super awakeFromNib];
-   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
-   self.navigationItem.titleView = img;
+   //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
+   //self.navigationItem.titleView = img;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   userDetails *user = [userDetails alloc];
+   _lableLogedInAs.text = [NSString stringWithFormat:@"You are logged in as %@",[user getUserName]];
     // Do any additional setup after loading the view.
 }
 
@@ -41,6 +52,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
