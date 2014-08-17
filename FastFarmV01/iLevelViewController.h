@@ -24,6 +24,8 @@
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint *cSubTitle3VerticalPosition;
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint *cSubTitle4VerticalPosition;
 
+@property (nonatomic, retain) IBOutlet UILabel *labelTile3;
+
 
 @property (nonatomic, retain) IBOutlet UILabel *labelLastUpdate;
 -(IBAction) buttonPushing:(id)Sender;
