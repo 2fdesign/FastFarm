@@ -10,6 +10,7 @@
 
 @interface AboutViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UILabel *labelVersion;
 @property (nonatomic, retain) IBOutlet UILabel *lableLogedInAs;
 
 -(IBAction) btnLogoutPressed;

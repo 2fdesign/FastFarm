@@ -60,12 +60,24 @@
     //   [_switchRememberPassword setOn:FALSE];
     //else
     //   [_switchRememberPassword setOn:TRUE];
+   
+   [_textPassword addTarget:self
+                     action:@selector(textFieldDone:)
+           forControlEvents:UIControlEventEditingDidEndOnExit];
+   [_textUser addTarget:self
+                 action:@selector(textFieldDone:)
+       forControlEvents:UIControlEventEditingDidEndOnExit];
+   
     if ((_textUser.text.length > 0) && (_textPassword.text.length > 0))
     {
        [self btnLoginPress:NULL];
     }
-   
-        // Do any additional setup after loading the view.
+}
+
+- (IBAction)textFieldDone:(id)sender
+{
+   [sender resignFirstResponder];
+   [self btnLoginPress:nil];
 }
 
 - (void)didReceiveMemoryWarning

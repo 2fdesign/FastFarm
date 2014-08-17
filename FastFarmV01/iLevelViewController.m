@@ -8,6 +8,11 @@
 
 #import "iLevelViewController.h"
 
+#define IS_TALLSCREEN ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
+#define IS_IPHONE     ( [[[UIDevice currentDevice] model] rangeOfString:@"iPhone"].location != NSNotFound )
+#define IS_IPAD       ( [[[UIDevice currentDevice] model] rangeOfString:@"iPad"].location != NSNotFound )
+#define IS_IPHONE5    ( !IS_IPAD && IS_TALLSCREEN )
+
 @interface iLevelViewController ()
 {
    NSMutableArray *_fuelData;
@@ -191,6 +196,34 @@
    //[super awakeFromNib];
    //UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarLogo"]];
    //self.tabBarController.navigationItem.titleView = img;
+   
+   if (IS_TALLSCREEN)
+   {
+      _cTile1Height.constant = 227;
+      _cTile2Height.constant = 227;
+      _cTile3Height.constant = 227;
+      _cTile4Height.constant = 227;
+      _cIcon3VerticalPosition.constant = 265 + 44;
+      _cIcon4VerticalPosition.constant = 265 + 44;
+      _cTitle3VerticalPosition.constant = 333 + 44;
+      _cTitle4VerticalPosition.constant = 333 + 44;
+      _cSubTitle3VerticalPosition.constant = 353 + 44;
+      _cSubTitle4VerticalPosition.constant = 353 + 44;
+   }
+   else
+   {
+      _cTile1Height.constant = 183;
+      _cTile2Height.constant = 183;
+      _cTile3Height.constant = 183;
+      _cTile4Height.constant = 183;
+      _cIcon3VerticalPosition.constant = 265;
+      _cIcon4VerticalPosition.constant = 265;
+      _cTitle3VerticalPosition.constant = 333;
+      _cTitle4VerticalPosition.constant = 333;
+      _cSubTitle3VerticalPosition.constant = 353;
+      _cSubTitle4VerticalPosition.constant = 353;
+   }
+   
    [super viewDidLoad];
 }
 

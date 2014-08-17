@@ -23,7 +23,6 @@
 -(IBAction) btnLoginPress: (id) sender;
 -(IBAction) btnForgotPasswordPress: (id) sender;
 -(IBAction) backgroundPress: (id) sender;
--(IBAction) switchRemember: (id) sender;
 -(IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue;
 
 

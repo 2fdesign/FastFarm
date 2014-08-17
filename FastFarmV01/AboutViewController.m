@@ -9,6 +9,8 @@
 #import "AboutViewController.h"
 #import "userDetails.h"
 
+#define ver @"A0.0.1"
+
 @interface AboutViewController ()
 
 @end
@@ -44,7 +46,12 @@
     [super viewDidLoad];
    userDetails *user = [userDetails alloc];
    _lableLogedInAs.text = [NSString stringWithFormat:@"You are logged in as %@",[user getUserName]];
-    // Do any additional setup after loading the view.
+   
+   NSString *compileDate = [NSString stringWithUTF8String:__DATE__];
+   NSString *versioDate = [NSString stringWithFormat:@"Version %@ %@",ver, compileDate];
+   _labelVersion.text = versioDate;
+   
+   // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
