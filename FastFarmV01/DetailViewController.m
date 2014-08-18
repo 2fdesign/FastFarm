@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 #import "userDetails.h"
-
+#import "DetailViewTableViewCell.h"
 
 #define deg2Rad(x) (M_PI * x / 180.0)
 uint16_t x=70,y=70;
@@ -99,7 +99,7 @@ int c,l,animation_l,stepChange;
       //NSData *imageData = UIImagePNGRepresentation(myImage);
       //[mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
       
-      NSString *emailBody = [NSString stringWithFormat:@"Fule Order Requested for %@ %@\n Current Level %@ liters\n Capacity %@ liters\n LTF %@ liters\n",
+      NSString *emailBody = [NSString stringWithFormat:@"Fule Order Requested for %@ %@\n Current Level %@ litres\n Capacity %@ litres\n LTF %@ litres\n",
                               [_tankData objectForKey:@"TankID"],[_tankData objectForKey:@"TankName"],[_tankData objectForKey:@"Level"],[_tankData objectForKey:@"Capacity"],[_tankData objectForKey:@"LTF"]];
       [mailer setMessageBody:emailBody isHTML:NO];
       
@@ -255,44 +255,62 @@ int c,l,animation_l,stepChange;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return 5;
+   return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+   static NSString *CellIdentifier = @"DetailTableCell";
+   DetailViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   
+   if (cell == nil)
+   {
+      cell = [[DetailViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+   }
+   //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
    
    if (indexPath.row == 0)
    {
-      cell.textLabel.text = @"Last Updated";
+      cell.labelTitle.text = @"Last Updated";
       NSString *dateStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"DateTime"]];
       userDetails *user = [userDetails alloc];
-      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
+      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
    }
    else if (indexPath.row == 1)
    {
-      cell.textLabel.text = @"Tank Capacity";
-      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"Capacity"]];
+      cell.labelTitle.text = @"Tank Capacity";
+      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Litres",[_tankData objectForKey:@"Capacity"]];
    }
    else if (indexPath.row == 2)
    {
-      cell.textLabel.text = @"Current Level";
-      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"Level"]];
+      cell.labelTitle.text = @"Current Level";
+      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Litres",[_tankData objectForKey:@"Level"]];
    }
    else if (indexPath.row == 3)
    {
-      cell.textLabel.text = @"LTF";
-      cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Liters",[_tankData objectForKey:@"LTF"]];
+      cell.labelTitle.text = @"Litres to Fill (LTF)";
+      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Litres",[_tankData objectForKey:@"LTF"]];
    }
    else if (indexPath.row == 4)
    {
-      cell.textLabel.text = @"Alert Status";
+      cell.labelTitle.text = @"Days to Empty (DTE)";
+      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Days",[_tankData objectForKey:@"DTE"]];
+   }
+   else if (indexPath.row == 5)
+   {
+      cell.labelTitle.text = @"Alert Status";
       NSString *alertStatus = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"IsActiveAlerts"]];
       if ([alertStatus isEqualToString:@"0"])
-         cell.detailTextLabel.text = @"None";
+         cell.labelSubTitle.text = @"None";
       else
-         cell.detailTextLabel.text = @"ALERT Active";
+         cell.labelSubTitle.text = @"Fuel Level Low (<20%)";
    }
+   else if (indexPath.row == 6)
+   {
+      cell.labelTitle.text = @"";
+      cell.labelSubTitle.text = @"";
+   }
+
    return cell;
 }
 

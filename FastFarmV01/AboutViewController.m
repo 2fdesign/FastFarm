@@ -9,7 +9,7 @@
 #import "AboutViewController.h"
 #import "userDetails.h"
 
-#define ver @"A0.0.1"
+#define ver @"A0.0.2"
 
 @interface AboutViewController ()
 

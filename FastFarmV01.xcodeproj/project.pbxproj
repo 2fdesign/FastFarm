@@ -31,6 +31,7 @@
 		D4D2B120193DEC1A00FCE4DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4D2B11E193DEC1A00FCE4DB /* InfoPlist.strings */; };
 		D4D2B122193DEC1A00FCE4DB /* FastFarmV01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */; };
 		D4D3B5E0199D8BD90089F8D5 /* FuelViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D3B5DF199D8BD90089F8D5 /* FuelViewTableCell.m */; };
+		D4EC175719A1EBB400908A84 /* DetailViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EC175619A1EBB400908A84 /* DetailViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastFarmV01Tests.m; sourceTree = "<group>"; };
 		D4D3B5DE199D8BD90089F8D5 /* FuelViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelViewTableCell.h; sourceTree = "<group>"; };
 		D4D3B5DF199D8BD90089F8D5 /* FuelViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelViewTableCell.m; sourceTree = "<group>"; };
+		D4EC175519A1EBB400908A84 /* DetailViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewTableViewCell.h; sourceTree = "<group>"; };
+		D4EC175619A1EBB400908A84 /* DetailViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +255,8 @@
 			children = (
 				D4D3B5DE199D8BD90089F8D5 /* FuelViewTableCell.h */,
 				D4D3B5DF199D8BD90089F8D5 /* FuelViewTableCell.m */,
+				D4EC175519A1EBB400908A84 /* DetailViewTableViewCell.h */,
+				D4EC175619A1EBB400908A84 /* DetailViewTableViewCell.m */,
 			);
 			name = "TableView Cell";
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				D47CD845199F0170002F9139 /* AlertViewTableCell.m in Sources */,
 				D4760E6219582FD700AA81B2 /* LoginViewController.m in Sources */,
 				D497E0131985242800E430FC /* AboutViewController.m in Sources */,
+				D4EC175719A1EBB400908A84 /* DetailViewTableViewCell.m in Sources */,
 				D4D2B100193DEC1A00FCE4DB /* main.m in Sources */,
 				D4D2B10D193DEC1A00FCE4DB /* DetailViewController.m in Sources */,
 				D4D244F519601B240023832C /* userDetails.m in Sources */,

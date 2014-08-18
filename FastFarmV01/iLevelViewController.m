@@ -25,12 +25,14 @@
 
 -(void) httpNewData:(NSMutableArray *)data
 {
-   long fuelSum = 0;
+   double fuelCapacitySum = 0;
+   double fuelLevelSum = 0;
+   double avgFuelPercentage;
    _fuelData = data;
    if ([_fuelData count] == 1)
    {
       NSDictionary *object = _fuelData[0];
-      NSString *fuelLevelStr = [NSString stringWithFormat:@"Tank Level: %@ Liters",[object objectForKey:@"Level"]];
+      NSString *fuelLevelStr = [NSString stringWithFormat:@"Tank Level: %@ Litres",[object objectForKey:@"Level"]];
       //NSString *dateStr = [NSString stringWithFormat:@"%@",[object objectForKey:@"DateTime"]];
       //userDetails *user = [userDetails alloc];
       _labelLastUpdate.text = fuelLevelStr;
@@ -40,10 +42,13 @@
       for (int x=0; x<[_fuelData count]; x++)
       {
          NSDictionary *object = _fuelData[x];
-         fuelSum += [[object objectForKey:@"Level"] longValue];
+         fuelLevelSum += [[object objectForKey:@"Level"] doubleValue];
+         fuelCapacitySum += [[object objectForKey:@"Capacity"] doubleValue];
       }
-      fuelSum /= [_fuelData count];
-      NSString *fuelLevelStr = [NSString stringWithFormat:@"Avg Level: %ld Liters",fuelSum];
+      fuelLevelSum /= [_fuelData count];
+      fuelCapacitySum /= [_fuelData count];
+      avgFuelPercentage = (fuelLevelSum / fuelCapacitySum) *100;
+      NSString *fuelLevelStr = [NSString stringWithFormat:@"Avg Level: %.0f%%",avgFuelPercentage];
       _labelLastUpdate.text = fuelLevelStr;
    }
 }
@@ -203,12 +208,10 @@
       _cTile2Height.constant = 227;
       _cTile3Height.constant = 227;
       _cTile4Height.constant = 227;
-      _cIcon3VerticalPosition.constant = 265 + 44;
-      _cIcon4VerticalPosition.constant = 265 + 44;
-      _cTitle3VerticalPosition.constant = 333 + 44;
-      _cTitle4VerticalPosition.constant = 333 + 44;
-      _cSubTitle3VerticalPosition.constant = 353 + 44;
-      _cSubTitle4VerticalPosition.constant = 353 + 44;
+      _cIcon1VerticalPosition.constant = 80 + 34;
+      _cIcon2VerticalPosition.constant = 80 + 34;
+      _cIcon3VerticalPosition.constant = 265 + 78;
+      _cIcon4VerticalPosition.constant = 265 + 78;
    }
    else
    {
@@ -216,12 +219,10 @@
       _cTile2Height.constant = 183;
       _cTile3Height.constant = 183;
       _cTile4Height.constant = 183;
-      _cIcon3VerticalPosition.constant = 265;
-      _cIcon4VerticalPosition.constant = 265;
-      _cTitle3VerticalPosition.constant = 333;
-      _cTitle4VerticalPosition.constant = 333;
-      _cSubTitle3VerticalPosition.constant = 353;
-      _cSubTitle4VerticalPosition.constant = 353;
+      _cIcon1VerticalPosition.constant = 80 + 14;
+      _cIcon2VerticalPosition.constant = 80 + 14;
+      _cIcon3VerticalPosition.constant = 265 + 14;
+      _cIcon4VerticalPosition.constant = 265 + 14;
    }
    
    [super viewDidLoad];
