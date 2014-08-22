@@ -29,7 +29,7 @@
 		D4D2B117193DEC1A00FCE4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */; };
 		D4D2B118193DEC1A00FCE4DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */; };
 		D4D2B120193DEC1A00FCE4DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4D2B11E193DEC1A00FCE4DB /* InfoPlist.strings */; };
-		D4D2B122193DEC1A00FCE4DB /* FastFarmV01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */; };
+		D4D2B122193DEC1A00FCE4DB /* FastFarmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D2B121193DEC1A00FCE4DB /* FastFarmTests.m */; };
 		D4D3B5E0199D8BD90089F8D5 /* FuelViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D3B5DF199D8BD90089F8D5 /* FuelViewTableCell.m */; };
 		D4EC175719A1EBB400908A84 /* DetailViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EC175619A1EBB400908A84 /* DetailViewTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -60,14 +60,14 @@
 		D4D244F1195FFD180023832C /* httpInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpInterface.m; sourceTree = "<group>"; };
 		D4D244F319601B240023832C /* userDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetails.h; sourceTree = "<group>"; };
 		D4D244F419601B240023832C /* userDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userDetails.m; sourceTree = "<group>"; };
-		D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastFarmV01.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D2B0F0193DEC1A00FCE4DB /* FastFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2B0F3193DEC1A00FCE4DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4D2B0F5193DEC1A00FCE4DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D4D2B0F7193DEC1A00FCE4DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D4D2B0FB193DEC1A00FCE4DB /* FastFarmV01-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastFarmV01-Info.plist"; sourceTree = "<group>"; };
+		D4D2B0FB193DEC1A00FCE4DB /* FastFarm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastFarm-Info.plist"; sourceTree = "<group>"; };
 		D4D2B0FD193DEC1A00FCE4DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4D2B0FF193DEC1A00FCE4DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D4D2B101193DEC1A00FCE4DB /* FastFarmV01-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastFarmV01-Prefix.pch"; sourceTree = "<group>"; };
+		D4D2B101193DEC1A00FCE4DB /* FastFarm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastFarm-Prefix.pch"; sourceTree = "<group>"; };
 		D4D2B102193DEC1A00FCE4DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4D2B103193DEC1A00FCE4DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D4D2B106193DEC1A00FCE4DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,11 +76,11 @@
 		D4D2B10B193DEC1A00FCE4DB /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		D4D2B10C193DEC1A00FCE4DB /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		D4D2B10E193DEC1A00FCE4DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D4D2B114193DEC1A00FCE4DB /* FastFarmV01Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastFarmV01Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D2B114193DEC1A00FCE4DB /* FastFarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastFarmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2B115193DEC1A00FCE4DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D4D2B11D193DEC1A00FCE4DB /* FastFarmV01Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastFarmV01Tests-Info.plist"; sourceTree = "<group>"; };
+		D4D2B11D193DEC1A00FCE4DB /* FastFarmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastFarmTests-Info.plist"; sourceTree = "<group>"; };
 		D4D2B11F193DEC1A00FCE4DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastFarmV01Tests.m; sourceTree = "<group>"; };
+		D4D2B121193DEC1A00FCE4DB /* FastFarmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastFarmTests.m; sourceTree = "<group>"; };
 		D4D3B5DE199D8BD90089F8D5 /* FuelViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelViewTableCell.h; sourceTree = "<group>"; };
 		D4D3B5DF199D8BD90089F8D5 /* FuelViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelViewTableCell.m; sourceTree = "<group>"; };
 		D4EC175519A1EBB400908A84 /* DetailViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewTableViewCell.h; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 		D4D2B0E7193DEC1A00FCE4DB = {
 			isa = PBXGroup;
 			children = (
-				D4D2B0F9193DEC1A00FCE4DB /* FastFarmV01 */,
-				D4D2B11B193DEC1A00FCE4DB /* FastFarmV01Tests */,
+				D4D2B0F9193DEC1A00FCE4DB /* FastFarm */,
+				D4D2B11B193DEC1A00FCE4DB /* FastFarmTests */,
 				D4D2B0F2193DEC1A00FCE4DB /* Frameworks */,
 				D4D2B0F1193DEC1A00FCE4DB /* Products */,
 			);
@@ -186,8 +186,8 @@
 		D4D2B0F1193DEC1A00FCE4DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */,
-				D4D2B114193DEC1A00FCE4DB /* FastFarmV01Tests.xctest */,
+				D4D2B0F0193DEC1A00FCE4DB /* FastFarm.app */,
+				D4D2B114193DEC1A00FCE4DB /* FastFarmTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D4D2B0F9193DEC1A00FCE4DB /* FastFarmV01 */ = {
+		D4D2B0F9193DEC1A00FCE4DB /* FastFarm */ = {
 			isa = PBXGroup;
 			children = (
 				D497E0101985240600E430FC /* About Tab */,
@@ -218,33 +218,35 @@
 				D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */,
 				D47641DA194483E9003ED2B3 /* user.plist */,
 			);
+			name = FastFarm;
 			path = FastFarmV01;
 			sourceTree = "<group>";
 		};
 		D4D2B0FA193DEC1A00FCE4DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D4D2B0FB193DEC1A00FCE4DB /* FastFarmV01-Info.plist */,
+				D4D2B0FB193DEC1A00FCE4DB /* FastFarm-Info.plist */,
 				D4D2B0FC193DEC1A00FCE4DB /* InfoPlist.strings */,
 				D4D2B0FF193DEC1A00FCE4DB /* main.m */,
-				D4D2B101193DEC1A00FCE4DB /* FastFarmV01-Prefix.pch */,
+				D4D2B101193DEC1A00FCE4DB /* FastFarm-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D4D2B11B193DEC1A00FCE4DB /* FastFarmV01Tests */ = {
+		D4D2B11B193DEC1A00FCE4DB /* FastFarmTests */ = {
 			isa = PBXGroup;
 			children = (
-				D4D2B121193DEC1A00FCE4DB /* FastFarmV01Tests.m */,
+				D4D2B121193DEC1A00FCE4DB /* FastFarmTests.m */,
 				D4D2B11C193DEC1A00FCE4DB /* Supporting Files */,
 			);
+			name = FastFarmTests;
 			path = FastFarmV01Tests;
 			sourceTree = "<group>";
 		};
 		D4D2B11C193DEC1A00FCE4DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D4D2B11D193DEC1A00FCE4DB /* FastFarmV01Tests-Info.plist */,
+				D4D2B11D193DEC1A00FCE4DB /* FastFarmTests-Info.plist */,
 				D4D2B11E193DEC1A00FCE4DB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -264,9 +266,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D4D2B0EF193DEC1A00FCE4DB /* FastFarmV01 */ = {
+		D4D2B0EF193DEC1A00FCE4DB /* FastFarm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4D2B125193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01" */;
+			buildConfigurationList = D4D2B125193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarm" */;
 			buildPhases = (
 				D4D2B0EC193DEC1A00FCE4DB /* Sources */,
 				D4D2B0ED193DEC1A00FCE4DB /* Frameworks */,
@@ -276,14 +278,14 @@
 			);
 			dependencies = (
 			);
-			name = FastFarmV01;
+			name = FastFarm;
 			productName = FastFarmV01;
-			productReference = D4D2B0F0193DEC1A00FCE4DB /* FastFarmV01.app */;
+			productReference = D4D2B0F0193DEC1A00FCE4DB /* FastFarm.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4D2B113193DEC1A00FCE4DB /* FastFarmV01Tests */ = {
+		D4D2B113193DEC1A00FCE4DB /* FastFarmTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4D2B128193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01Tests" */;
+			buildConfigurationList = D4D2B128193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmTests" */;
 			buildPhases = (
 				D4D2B110193DEC1A00FCE4DB /* Sources */,
 				D4D2B111193DEC1A00FCE4DB /* Frameworks */,
@@ -294,9 +296,9 @@
 			dependencies = (
 				D4D2B11A193DEC1A00FCE4DB /* PBXTargetDependency */,
 			);
-			name = FastFarmV01Tests;
+			name = FastFarmTests;
 			productName = FastFarmV01Tests;
-			productReference = D4D2B114193DEC1A00FCE4DB /* FastFarmV01Tests.xctest */;
+			productReference = D4D2B114193DEC1A00FCE4DB /* FastFarmTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -316,7 +318,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D4D2B0EB193DEC1A00FCE4DB /* Build configuration list for PBXProject "FastFarmV01" */;
+			buildConfigurationList = D4D2B0EB193DEC1A00FCE4DB /* Build configuration list for PBXProject "FastFarm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -329,8 +331,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4D2B0EF193DEC1A00FCE4DB /* FastFarmV01 */,
-				D4D2B113193DEC1A00FCE4DB /* FastFarmV01Tests */,
+				D4D2B0EF193DEC1A00FCE4DB /* FastFarm */,
+				D4D2B113193DEC1A00FCE4DB /* FastFarmTests */,
 			);
 		};
 /* End PBXProject section */
@@ -382,7 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4D2B122193DEC1A00FCE4DB /* FastFarmV01Tests.m in Sources */,
+				D4D2B122193DEC1A00FCE4DB /* FastFarmTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +393,7 @@
 /* Begin PBXTargetDependency section */
 		D4D2B11A193DEC1A00FCE4DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4D2B0EF193DEC1A00FCE4DB /* FastFarmV01 */;
+			target = D4D2B0EF193DEC1A00FCE4DB /* FastFarm */;
 			targetProxy = D4D2B119193DEC1A00FCE4DB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -508,10 +510,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
-				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
+				GCC_PREFIX_HEADER = "FastFarmV01/FastFarm-Prefix.pch";
+				INFOPLIST_FILE = "FastFarmV01/FastFarm-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FastFarm;
 				PROVISIONING_PROFILE = "747B9986-662E-44D3-8078-A3BF65A5C205";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -526,10 +528,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: R D BECK (BMUMY7Z9EZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
-				INFOPLIST_FILE = "FastFarmV01/FastFarmV01-Info.plist";
+				GCC_PREFIX_HEADER = "FastFarmV01/FastFarm-Prefix.pch";
+				INFOPLIST_FILE = "FastFarmV01/FastFarm-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FastFarm;
 				PROVISIONING_PROFILE = "747B9986-662E-44D3-8078-A3BF65A5C205";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -551,8 +553,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "FastFarmV01Tests/FastFarmV01Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FastFarmV01Tests/FastFarmTests-Info.plist";
+				PRODUCT_NAME = FastFarmTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -569,8 +571,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastFarmV01/FastFarmV01-Prefix.pch";
-				INFOPLIST_FILE = "FastFarmV01Tests/FastFarmV01Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FastFarmV01Tests/FastFarmTests-Info.plist";
+				PRODUCT_NAME = FastFarmTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -579,7 +581,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4D2B0EB193DEC1A00FCE4DB /* Build configuration list for PBXProject "FastFarmV01" */ = {
+		D4D2B0EB193DEC1A00FCE4DB /* Build configuration list for PBXProject "FastFarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4D2B123193DEC1A00FCE4DB /* Debug */,
@@ -588,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4D2B125193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01" */ = {
+		D4D2B125193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4D2B126193DEC1A00FCE4DB /* Debug */,
@@ -597,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4D2B128193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmV01Tests" */ = {
+		D4D2B128193DEC1A00FCE4DB /* Build configuration list for PBXNativeTarget "FastFarmTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4D2B129193DEC1A00FCE4DB /* Debug */,

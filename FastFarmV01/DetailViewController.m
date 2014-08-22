@@ -255,13 +255,17 @@ int c,l,animation_l,stepChange;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return 7;
+   return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    static NSString *CellIdentifier = @"DetailTableCell";
+   NSString *strLevel;
    DetailViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+   [numberFormatter setFormatterBehavior: NSNumberFormatterBehavior10_4];
+   [numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
    
    if (cell == nil)
    {
@@ -271,39 +275,63 @@ int c,l,animation_l,stepChange;
    
    if (indexPath.row == 0)
    {
+      cell.cLabelUnitsWidth.constant = 200;
+      cell.labelSubTitle.textAlignment = NSTextAlignmentLeft;
       cell.labelTitle.text = @"Last Updated";
       NSString *dateStr = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"DateTime"]];
       userDetails *user = [userDetails alloc];
       cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ %@",[user humanDateFromString:dateStr],[user humanTimeFromString:dateStr]];
+      cell.unitsLabel.text = @"";
    }
    else if (indexPath.row == 1)
    {
+      cell.cLabelUnitsWidth.constant = 56;
+      cell.labelSubTitle.textAlignment = NSTextAlignmentRight;
       cell.labelTitle.text = @"Tank Capacity";
-      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Litres",[_tankData objectForKey:@"Capacity"]];
+      strLevel = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: [[_tankData objectForKey:@"Capacity"]intValue]]];
+      cell.labelSubTitle.text = strLevel;
+      cell.unitsLabel.text = @"Litres";
    }
    else if (indexPath.row == 2)
    {
+      cell.cLabelUnitsWidth.constant = 56;
+      cell.labelSubTitle.textAlignment = NSTextAlignmentRight;
       cell.labelTitle.text = @"Current Level";
-      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Litres",[_tankData objectForKey:@"Level"]];
+      strLevel = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: [[_tankData objectForKey:@"Level"]intValue]]];
+      cell.labelSubTitle.text = strLevel;
+      cell.unitsLabel.text = @"Litres";
    }
    else if (indexPath.row == 3)
    {
+      cell.cLabelUnitsWidth.constant = 56;
+      cell.labelSubTitle.textAlignment = NSTextAlignmentRight;
       cell.labelTitle.text = @"Litres to Fill (LTF)";
-      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Litres",[_tankData objectForKey:@"LTF"]];
+      strLevel = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: [[_tankData objectForKey:@"LTF"]intValue]]];
+      cell.labelSubTitle.text = strLevel;
+      cell.unitsLabel.text = @"Litres";
    }
    else if (indexPath.row == 4)
    {
+      cell.cLabelUnitsWidth.constant = 56;
+      cell.labelSubTitle.textAlignment = NSTextAlignmentRight;
       cell.labelTitle.text = @"Days to Empty (DTE)";
-      cell.labelSubTitle.text = [NSString stringWithFormat:@"%@ Days",[_tankData objectForKey:@"DTE"]];
+      strLevel = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: [[_tankData objectForKey:@"DTE"]intValue]]];
+      if ([strLevel isEqualToString:@"0"])
+         strLevel = @"-";
+      cell.labelSubTitle.text = strLevel;
+      cell.unitsLabel.text = @"Days";
    }
    else if (indexPath.row == 5)
    {
+      cell.cLabelUnitsWidth.constant = 200;
+      cell.labelSubTitle.textAlignment = NSTextAlignmentLeft;
       cell.labelTitle.text = @"Alert Status";
       NSString *alertStatus = [NSString stringWithFormat:@"%@",[_tankData objectForKey:@"IsActiveAlerts"]];
       if ([alertStatus isEqualToString:@"0"])
          cell.labelSubTitle.text = @"None";
       else
          cell.labelSubTitle.text = @"Fuel Level Low (<20%)";
+      cell.unitsLabel.text = @"";
    }
    else if (indexPath.row == 6)
    {

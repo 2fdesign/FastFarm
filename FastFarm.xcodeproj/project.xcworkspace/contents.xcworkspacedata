@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FastFarmV01.xcodeproj">
+      location = "self:FastFarm.xcodeproj">
    </FileRef>
 </Workspace>

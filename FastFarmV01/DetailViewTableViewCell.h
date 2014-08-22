@@ -12,5 +12,7 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *labelTitle;
 @property (nonatomic, retain) IBOutlet UILabel *labelSubTitle;
+@property (nonatomic, retain) IBOutlet UILabel *unitsLabel;
+@property (nonatomic, retain) IBOutlet NSLayoutConstraint *cLabelUnitsWidth;
 
 @end

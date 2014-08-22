@@ -159,7 +159,7 @@
    [numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
    NSString *strLevel = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: (int)(l)]];
    
-   NSString *strPercent = [[NSString alloc] initWithFormat:@"%d%%",(int)(percent)];
+   NSString *strPercent = [[NSString alloc] initWithFormat:@"%d",(int)(percent)];
    
    
    cell.labelTitle.text = [[_objects objectAtIndex:indexPath.row]objectForKey:@"TankName"];
