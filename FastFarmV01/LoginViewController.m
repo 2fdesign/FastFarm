@@ -29,7 +29,7 @@
    [_loginActivity stopAnimating];
    //iLevelViewController *vc = [[iLevelViewController alloc] initWithNibName:@"iLevelViewController" bundle:nil];
    //[[self navigationController] pushViewController:vc animated:YES];
-   UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Connection Failed" message:@"Unable to connect to FastFarm" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Connection Failed" message:@"Check that you are using a valid email and password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
    [errorView show];
 }
 

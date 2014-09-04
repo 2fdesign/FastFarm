@@ -54,7 +54,7 @@
 }
 -(void) httpFailure:(NSString *)error
 {
-   UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Connection Failed" message:@"Unable to connect to FastFarm" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Connection Failed" message:@"Unable to connect to Fastfarm. Please try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
    [errorView show];
    //[self.navigationController popToRootViewControllerAnimated:true];
 }
@@ -88,7 +88,7 @@
          
          [mailer setSubject:[NSString stringWithFormat:@"Fuel Order Requested"]];
          
-         NSArray *toRecipients = [NSArray arrayWithObjects:@"info@2fdesign.co.nz", nil];
+         NSArray *toRecipients = [NSArray arrayWithObjects:@"sales@southfuels.co.nz", nil];
          [mailer setToRecipients:toRecipients];
          
          //UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];

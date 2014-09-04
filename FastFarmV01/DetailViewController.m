@@ -92,7 +92,7 @@ int c,l,animation_l,stepChange;
       
       [mailer setSubject:[NSString stringWithFormat:@"Fuel Order for %@",[_tankData objectForKey:@"TankName"]]];
       
-      NSArray *toRecipients = [NSArray arrayWithObjects:@"info@2fdesign.co.nz", nil];
+      NSArray *toRecipients = [NSArray arrayWithObjects:@"sales@southfuels.co.nz", nil];
       [mailer setToRecipients:toRecipients];
       
       //UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
