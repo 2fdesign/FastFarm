@@ -39,6 +39,8 @@
 - (id) initWithDelegate:(id<httpInterfaceDelegate>)delegateObject;
 - (void) loginWithUser:(NSString *)username password:(NSString *)password;
 - (void) getFuelDataForUser:(NSString *)username password:(NSString *)password;
+- (void) getWaterDataForUser:(NSString *)username password:(NSString *)password;
+- (void) getWeatherDataForUser:(NSString *)username password:(NSString *)password;
 - (void) getAlertHistoryForUser:(NSString *)username password:(NSString *)password;
 - (void) cancelConnection;
 - (void) sendHTTPGetWithURL:(NSString *)urlString;

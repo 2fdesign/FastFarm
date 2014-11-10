@@ -51,6 +51,49 @@ uint16_t httpMessage;
 {
 }
 
+- (void) getWaterDataForUser:(NSString *)username password:(NSString *)password
+{
+   NSMutableArray *data = [[NSMutableArray alloc] init];
+   _objects = data;
+   NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username, password];
+   NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
+   NSString *base64String = [[NSString alloc]init];
+   if ([base64String respondsToSelector:@selector(base64EncodedStringWithOptions:)])
+   {
+      base64String = [plainData base64EncodedStringWithOptions:0];  // iOS 7+
+   }
+   else
+   {
+      base64String = [plainData base64Encoding];                              // pre iOS7
+   }
+   _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
+   
+   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+   [self sendHTTPGetWithURL:@"http://api.m2mnz.com/v1.2/watersites/"];
+   
+}
+
+- (void) getWeatherDataForUser:(NSString *)username password:(NSString *)password
+{
+   NSMutableArray *data = [[NSMutableArray alloc] init];
+   _objects = data;
+   NSMutableString *loginString = (NSMutableString*)[@"" stringByAppendingFormat:@"%@:%@", username, password];
+   NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
+   NSString *base64String = [[NSString alloc]init];
+   if ([base64String respondsToSelector:@selector(base64EncodedStringWithOptions:)])
+   {
+      base64String = [plainData base64EncodedStringWithOptions:0];  // iOS 7+
+   }
+   else
+   {
+      base64String = [plainData base64Encoding];                              // pre iOS7
+   }
+   _encodedLoginData = [@"Basic " stringByAppendingFormat:@"%@", base64String];
+   
+   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+   [self sendHTTPGetWithURL:@"http://api.m2mnz.com/v1.2/weathersites/"];
+}
+
 - (void) getFuelDataForUser:(NSString *)username password:(NSString *)password
 {
    NSMutableArray *data = [[NSMutableArray alloc] init];

@@ -74,10 +74,10 @@
 -(IBAction) buttonExternalAppRequested:(id)Sender
 {
    UIButton *button = (UIButton*)Sender;
-   if (button.tag == 1)  // Weather
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://m.metservice.com"]];
-   if (button.tag == 2)  // Sports
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.stuff.co.nz/sport"]];
+   //if (button.tag == 1)  // Weather
+   //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://m.metservice.com"]];
+   //if (button.tag == 2)  // Sports
+   //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.stuff.co.nz/sport"]];
    if (button.tag == 3)  // Email
    {
       if ([MFMailComposeViewController canSendMail])
